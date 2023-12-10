@@ -1,0 +1,12 @@
+.logo{
+    display: flex;
+}
+h3{
+    font-family: Georgia, 'Times New Roman', serif;
+    text-transform: none;
+    margin-top: 30px;
+    font-size: 35px;
+}
+span{
+    color: pink;
+}

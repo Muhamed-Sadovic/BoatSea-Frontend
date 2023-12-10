@@ -1,0 +1,32 @@
+footer {
+  width: 100%;
+  background-color: #343a40;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 100px;
+}
+.footer-item {
+  flex: 1; /* Sve stavke imaju istu širinu */
+  border: 1px solid #ccc; /* Dodaj granice kako bi se lakše razlikovale */
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+.icons{
+    font-size: 25px;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px;
+}
+.icon-hover{
+    padding: 5px;
+    margin-top: 0;
+}
+.icon-hover:hover{
+    color: red;
+    transition: 0.7s;
+}
