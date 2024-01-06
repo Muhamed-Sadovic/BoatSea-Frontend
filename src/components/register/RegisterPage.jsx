@@ -1,5 +1,4 @@
-import React from "react";
-import Navbar from "../navbar/Navbar";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
@@ -11,26 +10,29 @@ function Register() {
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const registerUserHandler = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/register", { name, email, password })
-      .then((result) => {
-        console.log(result);
-        const userId = result.data._id;
-        // const token = result.data.token;
-        //console.log(userId);
-        navigate(`/verification/${userId}`);
-        //localStorage.setItem("jwtToken", token);
-      })
-      .catch((err) => console.log(err + "error"));
+    try {
+      const response = await axios.post(
+        "https://localhost:7087/api/User/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
+      console.log(response.data);
+      navigate("/login");
+    } catch (e) {
+      console.log("errpr" + e);
+    }
   };
 
   return (
     <>
       <div className="registerContainer">
         <h1>Register</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={registerUserHandler}>
           <label>
             <strong>Name</strong>
           </label>
