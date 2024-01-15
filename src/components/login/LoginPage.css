@@ -18,8 +18,7 @@
 .loginContainer h2 {
   margin-top: 0;
 }
-.loginContainer form input[type="text"],
-[type="email"],
+.loginContainer form input [type="email"],
 [type="password"] {
   width: 100%;
   padding: 12px 20px;
@@ -31,6 +30,7 @@
 }
 .loginContainer form label {
   font-size: 20px;
+  margin-top: 10px;
 }
 .loginContainer form button {
   width: 100%;

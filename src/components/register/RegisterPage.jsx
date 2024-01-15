@@ -44,7 +44,7 @@ function Register() {
       setPasswordErrorMessage("Please enter password!");
       isValid = false;
       return;
-    } else if (password.trim().length < 6) {
+    } else if (password.trim().length < 4) {
       setPasswordErrorMessage("Password needs minimum 6 characters!");
       isValid = false;
       return;

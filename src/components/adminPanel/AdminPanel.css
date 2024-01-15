@@ -1,0 +1,50 @@
+.adminPanelContainer{
+    margin-top: 70px;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.podaci{
+    border: 2px solid yellow;
+    background-color: white;
+    width: 25%;
+    height: 400px;
+}
+.podaci h3{
+    text-align: center;
+    margin-top: 5px;
+}
+.users{
+    width: 65%;
+    background-color: white;
+    opacity: 0.8;
+}
+.users h3{
+    text-align: center;
+}
+.users table{
+    width: 100%;
+    border: 2px solid red;
+    border-collapse: collapse;
+}
+.users table thead{
+    text-align: left;
+    background-color: aqua;
+    height: 20px;
+    padding: 10px;
+}
+.users table th,td{
+    padding: 10px;
+}
+.users table tbody button{
+    background-color: red;
+    border: none;
+    margin-left: 13px;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}

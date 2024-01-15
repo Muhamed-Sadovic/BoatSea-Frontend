@@ -8,6 +8,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import VerificationPage from "./components/verification/VerificationPage";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/resetPassword/ResetPassword";
+import AdminPanel from "./components/adminPanel/AdminPanel";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { MyContext } from "./context/myContext";
@@ -25,6 +26,7 @@ function App() {
         "Authorization"
       ] = `Bearer ${currentUser.token}`;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -38,6 +40,7 @@ function App() {
         <Route path="/verification/:userId" Component={VerificationPage} />
         <Route path="/forgot-password" Component={ForgotPassword} />
         <Route path="/reset-password" Component={ResetPassword} />
+        <Route path="/adminpanel" Component={AdminPanel} />
       </Routes>
       <Footer />
     </>

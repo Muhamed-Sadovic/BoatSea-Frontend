@@ -11,7 +11,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState(null);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); //spiner da uradim
   const [error, setError] = useState(null);
   const { setUserFunction } = useContext(MyContext);
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ function Login() {
 
       const responseData = response.data;
       console.log(responseData);
+      const role = responseData.user.role;
 
       axios.defaults.headers.common[
         "Authorization"
@@ -64,7 +65,11 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(responseData));
       setEmail("");
       setPassword("");
-      navigate("/profile");
+      if (role === "Admin") {
+      navigate('/adminpanel');
+    } else {
+      navigate('/profile');
+    }
     } catch (error) {
       console.log("Error", error);
       if (error.response) {    
@@ -82,6 +87,8 @@ function Login() {
       setLoading(false);
     }
   };
+
+  
 
   return (
     <>
