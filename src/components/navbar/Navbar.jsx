@@ -36,6 +36,9 @@ function Navbar() {
           </li>
         )}
         {user && (
+          <li><NavLink to="profile">Profile</NavLink></li>
+        )}
+        {user && (
           <li>
             <button onClick={logoutUserHandler}>Logout</button>
           </li>

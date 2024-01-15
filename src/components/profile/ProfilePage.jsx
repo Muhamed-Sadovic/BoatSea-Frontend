@@ -1,9 +1,10 @@
-function ProfilePage() {
+import "./ProfilePage.css";
+
+export default function ProfilePage() {
     return (
-        <div>
-            muki
+        <div className="profileContainer">
+            mukiajvhfhjafhbafhjafbhahf
         </div>
     )
 }
 
-export default ProfilePage

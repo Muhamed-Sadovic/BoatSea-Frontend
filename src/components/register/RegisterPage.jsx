@@ -1,17 +1,77 @@
-import React, { useContext } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import axios from "axios";
 
 function Register() {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [nameErrorMessage, setNameErrorMessage] = useState(null);
+  const [emailErrorMessage, setEmailErrorMessage] = useState(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+  const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
+    useState(null);
   const navigate = useNavigate();
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const registerUserHandler = async (e) => {
     e.preventDefault();
+    let isValid = true;
+
+    if (name.trim().length === 0) {
+      setNameErrorMessage("Please enter name!");
+      isValid = false;
+      return;
+    } else {
+      setNameErrorMessage(null);
+    }
+
+    if (email.length === 0) {
+      setEmailErrorMessage("Please enter email!");
+      isValid = false;
+      return;
+    } else if (!emailRegex.test(email)) {
+      setEmailErrorMessage("Invalid email, try again!");
+      isValid = false;
+      return;
+    } else {
+      setEmailErrorMessage(null);
+    }
+
+    if (password.trim().length === 0) {
+      setPasswordErrorMessage("Please enter password!");
+      isValid = false;
+      return;
+    } else if (password.trim().length < 6) {
+      setPasswordErrorMessage("Password needs minimum 6 characters!");
+      isValid = false;
+      return;
+    } else {
+      setPasswordErrorMessage(null);
+    }
+
+    if (confirmPassword.trim().length === 0) {
+      setConfirmPasswordErrorMessage("Please confirm password!");
+      isValid = false;
+      return;
+    } else {
+      setConfirmPasswordErrorMessage(null);
+    }
+
+    if (password !== confirmPassword) {
+      setConfirmPasswordErrorMessage("Passwords didn't match, try again!");
+      isValid = false;
+      return;
+    } else {
+      setConfirmPasswordErrorMessage(null);
+    }
+
+    if (!isValid) {
+      return;
+    }
+
     try {
       const response = await axios.post(
         "https://localhost:7087/api/User/register",
@@ -21,6 +81,14 @@ function Register() {
           password,
         }
       );
+
+      setName("");
+      setEmail("");
+      setPassword("");
+      setNameErrorMessage("");
+      setEmailErrorMessage("");
+      setPasswordErrorMessage("");
+
       console.log(response.data);
       navigate("/login");
     } catch (e) {
@@ -43,6 +111,7 @@ function Register() {
             name="name"
             onChange={(e) => setName(e.target.value)}
           />
+          {nameErrorMessage && <p>{nameErrorMessage}</p>}
           <label>
             <strong>Email</strong>
           </label>
@@ -53,7 +122,8 @@ function Register() {
             name="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="email">
+          {emailErrorMessage && <p>{emailErrorMessage}</p>}
+          <label>
             <strong>Password</strong>
           </label>
           <input
@@ -62,6 +132,17 @@ function Register() {
             name="password"
             onChange={(e) => setPassword(e.target.value)}
           />
+          {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
+          <label>
+            <strong>Confirm Password</strong>
+          </label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            name="confirmPassword"
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
           <button type="submit">Register</button>
         </form>
         <p>Already Have an Account</p>
