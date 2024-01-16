@@ -9,6 +9,8 @@ import VerificationPage from "./components/verification/VerificationPage";
 import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 import ResetPassword from "./components/resetPassword/ResetPassword";
 import AdminPanel from "./components/adminPanel/AdminPanel";
+import CreateBoat from "./components/createBoat/CreateBoat";
+import Boats from "./components/Boats/Boats";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { MyContext } from "./context/myContext";
@@ -41,6 +43,8 @@ function App() {
         <Route path="/forgot-password" Component={ForgotPassword} />
         <Route path="/reset-password" Component={ResetPassword} />
         <Route path="/adminpanel" Component={AdminPanel} />
+        <Route path="createboat" Component={CreateBoat} />
+        <Route path="boats" Component={Boats} />
       </Routes>
       <Footer />
     </>

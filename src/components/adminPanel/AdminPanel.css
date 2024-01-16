@@ -11,10 +11,17 @@
     background-color: white;
     width: 25%;
     height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
-.podaci h3{
-    text-align: center;
-    margin-top: 5px;
+.podaci img{
+    border-radius: 50%;
+    width: 140px;
+    height: 140px;
+}
+.podaci p{
+    margin-bottom: 0px;
 }
 .users{
     width: 65%;

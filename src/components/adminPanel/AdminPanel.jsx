@@ -9,7 +9,7 @@ function AdminPanel() {
   const [adminData, setAdminData] = useState({
     name: "",
     email: "",
-    image: "",
+    imageName: "",
   });
   const [allUsers, setAllUsers] = useState([
     {
@@ -28,7 +28,7 @@ function AdminPanel() {
       setAdminData({
         name: user.name || "",
         email: user.email || "",
-        image: user.image || "",
+        imageName: user.imageName || "",
       });
     }
     GetAllUsers();
@@ -64,10 +64,12 @@ function AdminPanel() {
   return (
     <div className="adminPanelContainer">
       <div className="podaci">
-        <h3>Profile</h3>
+        <img
+          src={`https://localhost:7087/Images/${adminData.imageName}`}
+          alt=""
+        />
         <p>Name: {adminData.name}</p>
         <p>Email: {adminData.email}</p>
-        <p>Slika: {adminData.image}</p>
       </div>
       <div className="users">
         <h3>Users</h3>

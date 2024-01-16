@@ -26,6 +26,9 @@ function Navbar() {
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
+        <li>
+          <NavLink to="boats">Boats</NavLink>
+        </li>
         {!user && (
           <li>
             <NavLink to="/register">Register</NavLink>
@@ -38,6 +41,9 @@ function Navbar() {
         )}
         {user && !isAdmin &&(
           <li><NavLink to="profile">Profile</NavLink></li>
+        )}
+        {isAdmin && (
+          <li><NavLink to="/createboat">Create Boat</NavLink></li>
         )}
         {isAdmin && (
           <li><NavLink to="/adminpanel">Admin Panel</NavLink></li>

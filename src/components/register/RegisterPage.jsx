@@ -13,8 +13,15 @@ function Register() {
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
   const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
     useState(null);
+  const [file, setFile] = useState();
+  const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  const PromenaSlike = (e) => {
+    setFile(e.target.files[0]);
+    setFileName(e.target.files[0].name);
+  };
 
   const registerUserHandler = async (e) => {
     e.preventDefault();
@@ -72,13 +79,22 @@ function Register() {
       return;
     }
 
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("ImageName", fileName);
+    formData.append("Image", file);
+
     try {
       const response = await axios.post(
         "https://localhost:7087/api/User/register",
+        formData,
         {
-          name,
-          email,
-          password,
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
 
@@ -92,7 +108,7 @@ function Register() {
       console.log(response.data);
       navigate("/login");
     } catch (e) {
-      console.log("errpr" + e);
+      console.log("error" + e);
     }
   };
 
@@ -143,6 +159,7 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
+          <input type="file" id="image" name="image" onChange={PromenaSlike} />
           <button type="submit">Register</button>
         </form>
         <p>Already Have an Account</p>
