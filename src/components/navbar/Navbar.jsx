@@ -14,7 +14,7 @@ function Navbar() {
     setUserFunction(null);
     localStorage.removeItem("user");
     axios.defaults.headers.common["Authorization"] = "";
-    navigate("/")
+    navigate("/login")
   };
 
   return (

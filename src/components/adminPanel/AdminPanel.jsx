@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { MyContext } from "../../context/myContext";
 import axios from "axios";
 import "./AdminPanel.css";
 const url = "https://localhost:7087/api/User/";

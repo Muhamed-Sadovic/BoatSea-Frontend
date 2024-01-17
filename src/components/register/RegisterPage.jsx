@@ -85,7 +85,7 @@ function Register() {
     formData.append("password", password);
     formData.append("ImageName", fileName);
     formData.append("Image", file);
-
+    
     try {
       const response = await axios.post(
         "https://localhost:7087/api/User/register",

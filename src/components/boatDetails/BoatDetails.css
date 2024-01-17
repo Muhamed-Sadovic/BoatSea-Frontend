@@ -1,0 +1,47 @@
+.boatDetailsContainer{
+    margin-top: 80px;
+    background-color: white;
+    opacity: 0.8;
+    width: 80%;
+    margin: auto;
+    margin-top: 80px;
+    height: 500px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+.boatDetailsContainer img{
+    width: 400px;
+    height: 400px;
+    margin-top: 20px;
+}
+.boatDetailsContainer .details{
+    display: flex;
+    flex-direction: column;
+}
+.boatDetailsContainer .details p{
+    font-size: 18px;
+}
+.boatDetailsContainer .details p span{
+    font-weight: bold;
+    color: black;
+}
+.boatDetailsContainer .details .dugmici{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.boatDetailsContainer .details .dugmici button{
+    width: 80px;
+    height: 40px;
+    background-color: rgb(26, 188, 209);
+    color: white;
+    border: none;
+    margin: 0px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+#crvena{
+    background-color: red;
+}
