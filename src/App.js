@@ -45,7 +45,7 @@ function App() {
         <Route path="/editBoat/:id" Component={EditBoat} />
         <Route path="/verifyAccount/:id" Component={VerificationPage} />
         <Route path="/forgot-password" Component={ForgotPassword} />
-        <Route path="/reset-password" Component={ResetPassword} />
+        <Route path="/reset-password/:token" Component={ResetPassword} />
         <Route path="/adminpanel" Component={AdminPanel} />
         <Route path="/createboat" Component={CreateBoat} />
         <Route path="/boats" Component={Boats} />

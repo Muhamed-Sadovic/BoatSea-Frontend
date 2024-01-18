@@ -8,17 +8,16 @@ function ForgotPassword() {
   const [email, setEmail] = useState();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/forgot-password", { email })
-      .then((result) => {
-        console.log(result);
-        if (result.data.success === true) {
-          navigate("/");
-        }
-      })
-      .catch((err) => console.log(err));
+    try {
+      await axios.post("https://localhost:7087/api/User/forgotPassword", {
+        email,
+      });
+      alert("Link za resetovanje lozinke je poslat na vaš email.");
+    } catch (error) {
+      console.error("Greška: ", error);
+    }
   };
 
   return (
@@ -30,7 +29,6 @@ function ForgotPassword() {
           <input
             type="email"
             placeholder="Enter Email"
-            autoComplete="off"
             name="email"
             onChange={(e) => setEmail(e.target.value)}
           />

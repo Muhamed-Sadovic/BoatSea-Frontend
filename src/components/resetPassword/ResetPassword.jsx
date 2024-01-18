@@ -1,48 +1,67 @@
 import React, { useEffect } from "react";
 import Navbar from "../navbar/Navbar";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
 
 function ResetPassword() {
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
   const [invalidUser, setInvalidUser] = useState("");
   const navigate = useNavigate();
-  const location = useLocation();
+  const { token } = useParams();
 
-  //const {token, id} = queryString.parse(location.search)
+  useEffect(() => {}, []);
 
-  const verifyToken = async () => {
-    try {
-      const { token, id } = queryString.parse(location.search);
-      const { data } = await axios(
-        `http://localhost:3001/verify-token?token=${token}&id=${id}`
-      );
-      if (!data.success) return setInvalidUser(data.error);
-
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    verifyToken();
-  }, []);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:3001/forgot-password", { password })
-      .then((result) => {
-        console.log(result);
-        if (result.data.success === true) {
-          navigate("/");
+    let isValid = true;
+
+    if (password.trim().length === 0) {
+      setPasswordErrorMessage("Please enter password!");
+      isValid = false;
+      return;
+    } else {
+      setPasswordErrorMessage(null);
+    }
+
+    if (confirmPassword.trim().length === 0) {
+      setPasswordErrorMessage("Please confirm password!");
+      isValid = false;
+      return;
+    } else {
+      setPasswordErrorMessage(null);
+    }
+
+    if (password !== confirmPassword) {
+      setPasswordErrorMessage("Passwords didn't match, try again!");
+      isValid = false;
+      return;
+    } else {
+      setPasswordErrorMessage(null);
+    }
+
+    if (!isValid) {
+      return;
+    }
+
+    try {
+      await axios.post(
+        `https://localhost:7087/api/User/resetPassword/${token}`,
+        {
+          newPassword: password,
         }
-      })
-      .catch((err) => console.log(err));
+      );
+      alert("Vaša lozinka je uspešno promenjena.");
+      navigate("/login")
+      // Preusmeravanje na stranicu za prijavu ili početnu stranicu
+    } catch (error) {
+      console.error("Greška: ", error);
+      // Obraditi grešku
+    }
   };
 
   return (
@@ -62,9 +81,10 @@ function ResetPassword() {
             placeholder="Confirm new passwoed"
             autoComplete="off"
             name="email"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Change</button>
+          {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
         </form>
       </div>
     </>
