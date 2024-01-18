@@ -32,8 +32,8 @@
     align-items: center;
 }
 .boatDetailsContainer .details .dugmici button{
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
     background-color: rgb(26, 188, 209);
     color: white;
     border: none;
@@ -44,4 +44,18 @@
 }
 #crvena{
     background-color: red;
+}
+.boatDetailsContainer .details .dugmici .detailsButton{
+    width: 100px;
+    height: 50px;
+    background-color: rgb(26, 188, 209);
+    color: white;
+    border: none;
+    margin: 20px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

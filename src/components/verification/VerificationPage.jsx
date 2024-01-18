@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../navbar/Navbar";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./VerificationPage.css";
@@ -8,19 +7,28 @@ import axios from "axios";
 function VerificationPage() {
   const [code, setCode] = useState();
   const navigate = useNavigate();
-  const { userId } = useParams();
-  //const jwtToken = localStorage.getItem("jwtToken");
-  //console.log(userId);
+  const { id } = useParams();
 
-  const handleSubmit = (e) => {
+  console.log(code);
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post(`http://localhost:3001/verification/${userId}`, { code, userId })
-      .then((result) => {
-        console.log(result);
-        navigate("/login");
-      })
-      .catch((err) => console.log(err + "afkjafj"));
+    try {
+      const response = await axios.post(
+        `https://localhost:7087/api/User/verifyAccount/${id}`,
+        JSON.stringify({ code: code }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      alert("Uspesna verifikacija");
+      navigate("/login");
+    } catch (e) {
+      alert("Pogresan kod, pokusajte ponovo!")
+      console.error("ad,nv nasd" + e);
+    }
   };
 
   return (
@@ -34,7 +42,6 @@ function VerificationPage() {
           <input
             type="text"
             placeholder="Enter Code"
-            autoComplete="off"
             name="code"
             onChange={(e) => setCode(e.target.value)}
           />

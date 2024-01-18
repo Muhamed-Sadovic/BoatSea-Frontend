@@ -17,7 +17,6 @@ function Boats() {
       description: "",
     },
   ]);
-  console.log(user);
 
   useEffect(() => {
     GetAllBoats();
@@ -43,12 +42,13 @@ function Boats() {
               <p>Type: {boat.type}</p>
               <p>From {boat.price}$ per day</p>
             </div>
-            <p className="descc">{boat.description}</p>
-            <div className="dugmici">
-              <Link to={`/boatDetails/${boat.id}`} className="detailsButton">
-                Details
-              </Link>
-            </div>
+            {user && (
+              <div className="dugmici">
+                <Link to={`/boatDetails/${boat.id}`} className="detailsButton">
+                  Details
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       ))}

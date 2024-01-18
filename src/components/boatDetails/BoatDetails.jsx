@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../context/myContext";
 import "./BoatDetails.css";
@@ -8,6 +8,7 @@ const url = "https://localhost:7087/api/Boat/";
 function BoatDetails() {
   const { id } = useParams();
   const { user } = useContext(MyContext);
+  const navigate = useNavigate();
   const [boat, setBoat] = useState({
     id: "",
     name: "",
@@ -31,8 +32,6 @@ function BoatDetails() {
     fetchData();
   }, [id]);
 
-  function handleUpdate(id) {}
-
   function handleDeleteBoat(id) {
     const isConfirmed = window.confirm(
       "Da li ste sigurni da želite da obrišete ovaj brod?"
@@ -45,12 +44,14 @@ function BoatDetails() {
           },
         });
         alert("Uspesno ste obrisali brod!");
+        navigate("/boats");
       } catch (e) {
         console.error(e);
       }
     }
   }
   function handleRent(id) {}
+  function handleEdit() {}
 
   return (
     <div className="boatDetailsContainer">
@@ -59,17 +60,31 @@ function BoatDetails() {
       </div>
       <div className="details">
         <h1>Details</h1>
-        <p><span>Name:</span> {boat.name}</p>
-        <p><span>Boat type:</span> {boat.type}</p>
-        <p><span>Price:</span> {boat.price}$</p>
-        <p><span>Additional Information:</span> {boat.description}</p>
+        <p>
+          <span>Name:</span> {boat.name}
+        </p>
+        <p>
+          <span>Boat type:</span> {boat.type}
+        </p>
+        <p>
+          <span>Price:</span> {boat.price}$
+        </p>
+        <p>
+          <span>Additional Information:</span> {boat.description}
+        </p>
         {user && user.user.role === "Admin" ? (
           <div className="dugmici">
-            <button onClick={() => handleUpdate(boat.id)}>Edit</button>
-            <button id="crvena" onClick={() => handleDeleteBoat(boat.id)}>Delete</button>
+            <Link to={`/editBoat/${boat.id}`} className="detailsButton">
+              Edit
+            </Link>
+            <button id="crvena" onClick={() => handleDeleteBoat(boat.id)}>
+              Delete
+            </button>
           </div>
         ) : (
-          <button onClick={() => handleRent(boat.id)}>Rent</button>
+          <div className="dugmici">
+            <button onClick={() => handleRent(boat.id)}>Rent</button>
+          </div>
         )}
       </div>
     </div>

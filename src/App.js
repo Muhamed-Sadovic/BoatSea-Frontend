@@ -16,6 +16,7 @@ import Navbar from "./components/navbar/Navbar";
 import { MyContext } from "./context/myContext";
 import axios from "axios";
 import BoatDetails from "./components/boatDetails/BoatDetails";
+import EditBoat from "./components/editBoat/EditBoat";
 
 function App() {
   const { setUserFunction } = useContext(MyContext);
@@ -41,12 +42,13 @@ function App() {
         <Route path="/register" Component={Register} />
         <Route path="/profile" Component={ProfilePage} />
         <Route path="/boatDetails/:id" Component={BoatDetails} />
-        <Route path="/verification/:userId" Component={VerificationPage} />
+        <Route path="/editBoat/:id" Component={EditBoat} />
+        <Route path="/verifyAccount/:id" Component={VerificationPage} />
         <Route path="/forgot-password" Component={ForgotPassword} />
         <Route path="/reset-password" Component={ResetPassword} />
         <Route path="/adminpanel" Component={AdminPanel} />
-        <Route path="createboat" Component={CreateBoat} />
-        <Route path="boats" Component={Boats} />
+        <Route path="/createboat" Component={CreateBoat} />
+        <Route path="/boats" Component={Boats} />
       </Routes>
       <Footer />
     </>

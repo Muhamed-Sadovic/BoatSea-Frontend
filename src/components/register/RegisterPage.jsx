@@ -85,7 +85,7 @@ function Register() {
     formData.append("password", password);
     formData.append("ImageName", fileName);
     formData.append("Image", file);
-    
+
     try {
       const response = await axios.post(
         "https://localhost:7087/api/User/register",
@@ -98,6 +98,10 @@ function Register() {
         }
       );
 
+      console.log(response.data);
+      console.log(response.data.user.id);
+      const id = response.data.user.id;
+
       setName("");
       setEmail("");
       setPassword("");
@@ -105,8 +109,7 @@ function Register() {
       setEmailErrorMessage("");
       setPasswordErrorMessage("");
 
-      console.log(response.data);
-      navigate("/login");
+      navigate(`/verifyAccount/${id}`);
     } catch (e) {
       console.log("error" + e);
     }
