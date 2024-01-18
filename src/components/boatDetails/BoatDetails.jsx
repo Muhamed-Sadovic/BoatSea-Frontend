@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Navigate, useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../context/myContext";
 import "./BoatDetails.css";
@@ -51,7 +51,6 @@ function BoatDetails() {
     }
   }
   function handleRent(id) {}
-  function handleEdit() {}
 
   return (
     <div className="boatDetailsContainer">
@@ -92,3 +91,107 @@ function BoatDetails() {
 }
 
 export default BoatDetails;
+
+
+//   useEffect(() => {
+//     async function fetchBoats() {
+//       try {
+//         const response = await axios.get(`${url}GetAllBoats`);
+//         setAllBoats(response.data);
+//       } catch (error) {
+//         console.error("Error fetching boats:", error);
+//       }
+//     }
+//     fetchBoats();
+//   }, []);
+
+//   useEffect(() => {
+//     const filtered = allBoats.filter(
+//       (boat) =>
+//         (type === "" || boat.type === type) &&
+//         boat.name.toLowerCase().includes(search.toLowerCase())
+//     );
+//     setFilteredBoats(filtered);
+//   }, [search, type, allBoats]);
+
+
+//   return (
+//     <>
+//       <div className="searchbar">
+//         <input
+//           type="text"
+//           placeholder="Pretraži po imenu..."
+//           value={search}
+//           onChange={handleSearchChange}
+//         />
+//         <select name="type" value={type} onChange={handleTypeChange}>
+//           <option value="">Svi Tipovi</option>
+//           <option value="Sail">Sail</option>
+//           <option value="Catamaran">Catamaran</option>
+//           <option value="Motor">Motor</option>
+//           <option value="Yacht">Yacht</option>
+//         </select>
+//       </div>
+//       <div className={filteredBoats.length > 0 ? "boatsContainer" : "tre"}>
+//         {filteredBoats.length > 0 ? (
+//           filteredBoats.map((boat) => (
+//             <div key={boat.id} className="boatContainer">
+//               <img
+//                 src={`https://localhost:7087/Images/${boat.imageName}`}
+//                 alt="Slika"
+//               />
+//               <div class="desc">
+//                 <p className="name">{boat.name}</p>
+//                 <div className="typePrice">
+//                   <p>Type: {boat.type}</p>
+//                   <p>From {boat.price}$ per day</p>
+//                 </div>
+//                 {user && (
+//                   <div className="dugmici">
+//                     <Link
+//                       to={`/boatDetails/${boat.id}`}
+//                       className="detailsButton"
+//                     >
+//                       Details
+//                     </Link>
+//                   </div>
+//                 )}
+//               </div>
+//             </div>
+//           ))
+//         ) : (
+//           <h1 style={{ textAlign: "center" }}>
+//             Nema čamaca koji odgovaraju kriterijumima
+//           </h1>
+//         )}
+//       </div>
+//     </>
+//   );
+// }
+
+// export default Boats;
+
+// {
+//   /* <img
+//                 src={`https://localhost:7087/Images/${boat.imageName}`}
+//                 alt="Slika"
+//               />
+//               <div class="desc">
+//                 <p className="name">{boat.name}</p>
+//                 <div className="typePrice">
+//                   <p>Type: {boat.type}</p>
+//                   <p>From {boat.price}$ per day</p>
+//                 </div>
+//                 {user && (
+//                   <div className="dugmici">
+//                     <Link
+//                       to={`/boatDetails/${boat.id}`}
+//                       className="detailsButton"
+//                     >
+//                       Details
+//                     </Link>
+//                   </div>
+//                 )}
+//               </div> */
+// }
+

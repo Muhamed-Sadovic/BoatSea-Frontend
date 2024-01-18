@@ -1,20 +1,14 @@
 import React, { useEffect } from "react";
-import Navbar from "../navbar/Navbar";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
-import queryString from "query-string";
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
-  const [invalidUser, setInvalidUser] = useState("");
   const navigate = useNavigate();
   const { token } = useParams();
-
-  useEffect(() => {}, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,11 +50,9 @@ function ResetPassword() {
         }
       );
       alert("Vaša lozinka je uspešno promenjena.");
-      navigate("/login")
-      // Preusmeravanje na stranicu za prijavu ili početnu stranicu
+      navigate("/login");
     } catch (error) {
       console.error("Greška: ", error);
-      // Obraditi grešku
     }
   };
 

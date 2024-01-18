@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-const url = "https://localhost:7087/api/User/";
 
 export default function ProfilePage() {
   let token = "";
@@ -43,9 +41,7 @@ export default function ProfilePage() {
               <th>Delete</th>
             </tr>
           </thead>
-          <tbody>
-            
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </div>

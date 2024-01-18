@@ -1,12 +1,39 @@
+.searchbar{
+  margin: 2%;
+  margin-top: 80px;
+  width: 96%;
+  height: 80px;
+  background-color: white;
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchbar form{
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.searchbar form label{
+  font-size: 20px;
+  font-weight: bold;
+}
 .boatsContainer {
   margin: 2%;
   background-color: white;
   opacity: 0.8;
   width: 96%;
-  margin-top: 80px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.tre{
+  text-align: center;
+  margin: 2%;
+  background-color: white;
+  opacity: 0.8;
+  width: 96%;
+  padding: 20px 0px;
 }
 .boatContainer {
   margin: 5px;
