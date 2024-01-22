@@ -1,17 +1,45 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect } from "react";
+import axios from "axios";
 import "./Payment.css";
 function Payment() {
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
-    alert("Transakcija je uspešno završena!");
+    const queryParams = new URLSearchParams(window.location.search);
+    const userId = decodeURIComponent(queryParams.get("userId"));
+    const boatId = decodeURIComponent(queryParams.get("boatId"));
+    const startDate = new Date(
+      decodeURIComponent(queryParams.get("startDate"))
+    );
+    const endDate = new Date(decodeURIComponent(queryParams.get("endDate")));
+    if (userId && boatId && startDate && endDate) {
+      Rent(userId, boatId, startDate, endDate);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    // Opciono: Obrada ID sesije iz URL-a ako je potrebno
-    //const sessionId = new URLSearchParams(location.search).get('sessionId');
-    navigate("/boats");
-  }, [navigate]);
+  async function Rent(userId, boatId, startDate, endDate) {
+    try {
+      const response = await axios.post("https://localhost:7087/api/Rent/RentBoat", {
+        userId,
+        boatId,
+        datumIznajmljivanja: startDate,
+        datumKrajaIznajmljivanja: endDate,
+      });
+      if (response.status === 200 || response.status === 201) {
+        const updateBoatResponse = await axios.put(`https://localhost:7087/api/Boat/updateAvailable/${boatId}`, {
+            available: false
+        });
+
+        console.log(updateBoatResponse);
+    }
+      alert("Rent successfully initiated!");
+      navigate("/boats");
+    } catch (error) {
+      console.error("Error in renting the boat:", error);
+    }
+  }
 
   return (
     <div className="paymentContainer">

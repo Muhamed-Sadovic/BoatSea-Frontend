@@ -34,38 +34,43 @@ function BoatDetails() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
 
-  const item = {
-    price: "price_1ObHctFPaUUOIdBrcktZ3Wfw",
-    quantity: 1,
-  };
+  // const item = {
+  //   price: "price_1ObHctFPaUUOIdBrcktZ3Wfw",
+  //   quantity: 1,
+  // };
 
-
-  const checkoutOptions = {
-    lineItems: [item],
-    mode: "payment",
-    successUrl: `${window.location.origin}/boats`,
-    cancelUrl: `${window.location.origin}/boatDetails/${id}`,
-  };
+  // const checkoutOptions = {
+  //   lineItems: [item],
+  //   mode: "payment",
+  //   successUrl: `${window.location.origin}/boats`,
+  //   cancelUrl: `${window.location.origin}/boatDetails/${id}`,
+  // };
 
   const redirectToCheckout = async () => {
     try {
       // Izračunajte ukupnu cenu na osnovu broja dana i cene po danu
       const daysRented = (endDate - startDate) / (1000 * 3600 * 24);
       const totalPrice = daysRented * boat.price;
+      const startDateISO = new Date(startDate).toISOString();
+      const endDateISO = new Date(endDate).toISOString();
 
-      console.log(totalPrice);
-  
+      const encodedStartDate = encodeURIComponent(startDateISO);
+      const encodedEndDate = encodeURIComponent(endDateISO);
+
+      console.log("User id:", user.user.id);
+      console.log("Boat id: ", id);
+
       const response = await axios.post(`${url}create-checkout-session`, {
         // Pošaljite potrebne informacije na backend, uključujući ukupnu cenu
         price: totalPrice,
-        successUrl: `${window.location.origin}/payment?sessionId={CHECKOUT_SESSION_ID}`,
+        successUrl: `${window.location.origin}/payment?userId=${user.user.id}&boatId=${id}&startDate=${encodedStartDate}&endDate=${encodedEndDate}`,
         cancelUrl: `${window.location.origin}/boatDetails/${boat.id}`,
       });
-  
+
       const { sessionId } = response.data;
       const stripe = await getStripe();
       const { error } = await stripe.redirectToCheckout({ sessionId });
-  
+
       if (error) {
         console.log("Stripe checkout error:", error);
       }
@@ -73,7 +78,6 @@ function BoatDetails() {
       console.error("Error creating checkout session:", error);
     }
   };
-  
 
   // const redirectToCheckout = async () => {
   //   const stripe = await getStripe();
@@ -94,7 +98,6 @@ function BoatDetails() {
 
     fetchData();
   }, [id]);
-
 
   function handleDeleteBoat(id) {
     const isConfirmed = window.confirm(
