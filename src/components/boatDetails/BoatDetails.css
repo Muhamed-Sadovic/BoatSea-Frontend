@@ -5,14 +5,14 @@
     width: 80%;
     margin: auto;
     margin-top: 80px;
-    height: 500px;
+    height: 550px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
 }
 .boatDetailsContainer img{
     width: 400px;
-    height: 400px;
+    height: 450px;
     margin-top: 20px;
 }
 .boatDetailsContainer .details{
@@ -25,6 +25,16 @@
 .boatDetailsContainer .details p span{
     font-weight: bold;
     color: black;
+}
+.dateForRent{
+    margin-bottom: 3px;
+}
+.picker{
+    display: flex;
+    justify-content: space-between;
+}
+.picker p{
+    margin-bottom: 2px;
 }
 .boatDetailsContainer .details .dugmici{
     display: flex;

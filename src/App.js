@@ -1,4 +1,5 @@
 import "./App.css";
+import "@stripe/stripe-js"
 import { Route, Routes } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import HomePage from "./components/homepage/HomePage";
@@ -17,6 +18,7 @@ import { MyContext } from "./context/myContext";
 import axios from "axios";
 import BoatDetails from "./components/boatDetails/BoatDetails";
 import EditBoat from "./components/editBoat/EditBoat";
+import Payment from "./components/payment/Payment";
 
 function App() {
   const { setUserFunction } = useContext(MyContext);
@@ -49,6 +51,7 @@ function App() {
         <Route path="/adminpanel" Component={AdminPanel} />
         <Route path="/createboat" Component={CreateBoat} />
         <Route path="/boats" Component={Boats} />
+        <Route path="/payment" Component={Payment} />
       </Routes>
       <Footer />
     </>

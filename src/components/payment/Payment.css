@@ -1,0 +1,9 @@
+.paymentContainer {
+  margin: 2%;
+  background-color: white;
+  opacity: 0.8;
+  width: 96%;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}

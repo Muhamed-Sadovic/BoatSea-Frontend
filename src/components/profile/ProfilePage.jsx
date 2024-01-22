@@ -31,7 +31,7 @@ export default function ProfilePage() {
         <p>Email: {userData.email}</p>
       </div>
       <div className="users">
-        <h3>Users</h3>
+        <h3>Your rents</h3>
         <table>
           <thead>
             <tr>
