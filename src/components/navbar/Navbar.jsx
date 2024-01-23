@@ -4,7 +4,6 @@ import axios from "axios";
 import { useContext } from "react";
 import { MyContext } from "../../context/myContext";
 import { IoLogOutOutline } from "react-icons/io5";
-import { CiMenuBurger } from "react-icons/ci";
 import { useState } from "react";
 import "./Navbar.css";
 
