@@ -79,12 +79,6 @@ function BoatDetails() {
     }
   };
 
-  // const redirectToCheckout = async () => {
-  //   const stripe = await getStripe();
-  //   const { error } = await stripe.redirectToCheckout(checkoutOptions);
-  //   console.log("stripe checkout error" + error);
-  // };
-
   useEffect(() => {
     const fetchData = async () => {
       try {

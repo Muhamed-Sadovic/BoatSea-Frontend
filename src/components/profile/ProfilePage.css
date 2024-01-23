@@ -1,4 +1,47 @@
-.profileContainer{
-    margin-top: 10%;
+.userContainer{
+    margin-top: 70px;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.userContainer .podaci{
+    border: 2px solid yellow;
+    background-color: white;
+    width: 25%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.rentedBoats{
+    width: 65%;
+    background-color: white;
+    opacity: 0.8;
+    height: 650px;
+}
+.rentedBoats h3{
+    text-align: center;
+}
+.rentedBoats .rentedBoat {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+  justify-content: space-around;
+}
+.rentedBoats .rentedBoat p {
+    margin-left: 10px;
+}
+.rentedBoats .rentedBoat button{
+    width: 100px;
+    height: 50px;
     background-color: red;
+    color: white;
+    border: none;
+    margin: 0px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
 }
