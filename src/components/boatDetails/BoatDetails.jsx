@@ -114,9 +114,7 @@ function BoatDetails() {
 
   return (
     <div className="boatDetailsContainer">
-      <div>
-        <img src={`https://localhost:7087/Images/${boat.imageName}`} alt="" />
-      </div>
+      <img src={`https://localhost:7087/Images/${boat.imageName}`} alt="" />
       <div className="details">
         <h1>Details</h1>
         <p>

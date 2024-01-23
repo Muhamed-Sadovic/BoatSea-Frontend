@@ -1,6 +1,7 @@
-.pageContainer{
-    display: flex;
-    justify-content: space-between;
+.pageContainer {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .container {
@@ -15,30 +16,63 @@
 }
 
 .image-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 150px;
+  margin-left: 20px;
+  flex-direction: column;
+  width: 50%;
+}
+
+.image-container h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.image-container p {
+  margin-bottom: 10px;
+  margin-top: 50px;
+  color: white;
+}
+
+.image-container img {
+  height: auto;
+  width: 300px;
+  height: 300px;
+  margin-bottom: 10px;
+  border-radius: 10%;
+  padding: 5px;
+}
+
+@media screen and (max-width: 1240px) {
+  .image-container img {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 990px) {
+  .container {
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .pageContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
-    margin-left: 20px;
-    flex-direction: column;
-    width: 50%;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .image-container h1 {
-    font-size: 3rem; /* Prilagodite veličinu fonta prema potrebi */
-    margin-bottom: 10px;
-  }
-  
-  .image-container p {
-    margin-bottom: 10px;
-    margin-top: 50px;
-    color: white;
-  }
-  
-  .image-container img {
-    height: auto;
-    width: 300px;
+  .container{
+    width: 80%;
+    margin-left: 10px;
+    margin-top: 80px;
     height: 300px;
-    margin-bottom: 10px;
-    border-radius: 10%;
-    padding: 5px;
   }
+  .image-container{
+    width: 85%;
+    margin-top: 40px;
+  }
+  .image-container img{
+    width: 100%;
+  }
+}
+

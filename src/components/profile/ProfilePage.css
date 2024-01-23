@@ -45,3 +45,10 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+@media screen and (max-width: 525px) {
+    .rentedBoat img{
+      width: 200px;
+      height: 200px;
+    }
+  }

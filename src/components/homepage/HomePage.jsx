@@ -1,7 +1,5 @@
 import React from "react";
 import "./HomePage.css";
-import Navbar from "../navbar/Navbar";
-import Footer from "../footer/Footer";
 
 function HomePage() {
   return (

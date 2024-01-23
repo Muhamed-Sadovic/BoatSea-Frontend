@@ -7,6 +7,16 @@ h3{
     margin-top: 30px;
     font-size: 35px;
 }
-span{
+.logo span{
     color: pink;
 }
+@media screen and (max-width: 845px) {
+    .logo img{
+        width: 100px;
+        height: 50px;
+        margin-top: 15px;
+    }
+    .logo h3{
+        font-size: 18px;
+    }
+  }

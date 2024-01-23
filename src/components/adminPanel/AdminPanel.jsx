@@ -63,12 +63,13 @@ function AdminPanel() {
   return (
     <div className="adminPanelContainer">
       <div className="podaci">
+        <h2 style={{marginTop: 0}}>Admin</h2>
         <img
           src={`https://localhost:7087/Images/${adminData.imageName}`}
           alt=""
         />
-        <p>Name: {adminData.name}</p>
-        <p>Email: {adminData.email}</p>
+        <p><span>Name:</span> {adminData.name}</p>
+        <p><span>Email:</span> {adminData.email}</p>
       </div>
       <div className="users">
         <h3>Users</h3>

@@ -46,4 +46,15 @@
   margin-bottom: 10px;
   color: red
 }
+@media screen and (max-width: 1230px) {
+  .registerContainer{
+    width: 50%;
+  }
+}
+@media screen and (max-width: 890px) {
+  .registerContainer{
+    margin-top: 20%;
+    width: 70%;
+  }
+}
 

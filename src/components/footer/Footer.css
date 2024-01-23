@@ -30,3 +30,18 @@ footer {
     color: red;
     transition: 0.7s;
 }
+@media screen and (max-width: 1320px) {
+  .footer-item {
+    font-size: 15px;
+  }
+  .footer-item h3{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1320px) {
+  footer{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+}
