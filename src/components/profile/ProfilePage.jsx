@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
   const [userData, setUserData] = useState({
+    id: "",
     name: "",
     email: "",
     imageName: "",
@@ -17,6 +18,7 @@ export default function ProfilePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     if (user) {
       setUserData({
+        id: user.id || "",
         name: user.name || "",
         email: user.email || "",
         imageName: user.imageName || "",
@@ -75,7 +77,7 @@ export default function ProfilePage() {
         <p>
           <span>Email:</span> {userData.email}
         </p>
-        <Link to={`/boatDetails`} className="detailsButton">
+        <Link to={`/editUser/${userData.id}`} className="detailsButton">
           Edit
         </Link>
       </div>

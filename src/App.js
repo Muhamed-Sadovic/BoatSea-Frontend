@@ -1,5 +1,3 @@
-import "./App.css";
-import "@stripe/stripe-js"
 import { Route, Routes } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import HomePage from "./components/homepage/HomePage";
@@ -15,10 +13,13 @@ import Boats from "./components/Boats/Boats";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { MyContext } from "./context/myContext";
-import axios from "axios";
 import BoatDetails from "./components/boatDetails/BoatDetails";
 import EditBoat from "./components/editBoat/EditBoat";
 import Payment from "./components/payment/Payment";
+import EditUser from "./components/editUser/EditUser";
+import axios from "axios";
+import "@stripe/stripe-js";
+import "./App.css";
 
 function App() {
   const { setUserFunction } = useContext(MyContext);
@@ -52,6 +53,7 @@ function App() {
         <Route path="/createboat" Component={CreateBoat} />
         <Route path="/boats" Component={Boats} />
         <Route path="/payment" Component={Payment} />
+        <Route path="/editUser/:id" Component={EditUser} />
       </Routes>
       <Footer />
     </>

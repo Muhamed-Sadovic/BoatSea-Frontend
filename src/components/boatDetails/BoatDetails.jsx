@@ -1,15 +1,14 @@
-import axios from "axios";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../context/myContext";
 import DatePicker from "react-datepicker";
 import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BoatDetails.css";
 const url = "https://localhost:7087/api/Boat/";
 
 let stripePromise;
-
 const getStripe = () => {
   if (!stripePromise) {
     stripePromise = loadStripe(
@@ -33,18 +32,16 @@ function BoatDetails() {
   });
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
-  // const item = {
-  //   price: "price_1ObHctFPaUUOIdBrcktZ3Wfw",
-  //   quantity: 1,
-  // };
-
-  // const checkoutOptions = {
-  //   lineItems: [item],
-  //   mode: "payment",
-  //   successUrl: `${window.location.origin}/boats`,
-  //   cancelUrl: `${window.location.origin}/boatDetails/${id}`,
-  // };
+  const openModal = (imageName) => {
+    setSelectedImage(imageName);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   const redirectToCheckout = async () => {
     try {
@@ -112,7 +109,11 @@ function BoatDetails() {
 
   return (
     <div className="boatDetailsContainer">
-      <img src={`https://localhost:7087/Images/${boat.imageName}`} alt="" />
+      <img
+        src={`https://localhost:7087/Images/${boat.imageName}`}
+        alt=""
+        onClick={() => openModal(boat.imageName)}
+      />
       <div className="details">
         <h1>Details</h1>
         <p>
@@ -164,8 +165,19 @@ function BoatDetails() {
             </button>
           </div>
         ) : (
-          <div className="dugmici">
-            <button onClick={redirectToCheckout}>Rent</button>
+          <div className={boat.available ? "dugmici" : "noRent"}>
+            <button onClick={redirectToCheckout} disabled={!boat.available}>Rent</button>
+          </div>
+        )}
+        {isModalOpen && (
+          <div className="modal" onClick={closeModal}>
+            <span className="close">&times;</span>
+            <img
+              className="modalContent"
+              src={`https://localhost:7087/Images/${selectedImage}`}
+              alt="Expanded boat"
+            />
+            <div className="caption">{selectedImage}</div>
           </div>
         )}
       </div>

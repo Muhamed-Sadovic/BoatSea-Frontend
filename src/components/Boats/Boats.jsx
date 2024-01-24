@@ -7,19 +7,33 @@ const url = "https://localhost:7087/api/Boat/";
 
 function Boats() {
   const { user } = useContext(MyContext);
-  const [allBoats, setAllBoats] = useState([
-    {
-      id: "",
-      name: "",
-      type: "",
-      price: "",
-      imageName: "",
-      description: "",
-    },
-  ]);
+  const [allBoats, setAllBoats] = useState([]);
   const [type, setType] = useState("");
   const [name, setName] = useState("");
   const [filteredBoats, setFilteredBoats] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const openModal = (imageName) => {
+    setSelectedImage(imageName);
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  // useEffect(() => {
+  //   const sortedBoats = [...allBoats].sort((a, b) => {
+  //     if (a.available && !b.available) {
+  //       return -1;
+  //     }
+  //     if (!a.available && b.available) {
+  //       return 1;
+  //     }
+  //     return 0;
+  //   });
+
+  //   setAllBoats(sortedBoats);
+  // }, [allBoats]);
 
   useEffect(() => {
     const filtered = allBoats.filter((boat) =>
@@ -33,6 +47,7 @@ function Boats() {
       try {
         const response = await axios.get(`${url}GetAllBoats`);
         setAllBoats(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching boats:", error);
       }
@@ -75,38 +90,72 @@ function Boats() {
       </div>
       <div className={filteredBoats.length > 0 ? "boatsContainer" : "tre"}>
         {filteredBoats.length > 0 ? (
-          filteredBoats.map((boat) => (
-            <div key={boat.id} className="boatContainer">
-              <img
-                src={`https://localhost:7087/Images/${boat.imageName}`}
-                alt="Slika"
-              />
-              <div class="desc">
-                <p className="name">{boat.name}</p>
-                <div className="typePrice">
-                  <p><span>Type:</span> {boat.type}</p>
-                  <p>For <span>{boat.price}$</span> per day</p>
-                </div>
-                {user && (
-                  <div className="dugmici">
-                    <Link
-                      to={`/boatDetails/${boat.id}`}
-                      className="detailsButton"
-                    >
-                      Details
-                    </Link>
+          [...filteredBoats]
+            .sort((a, b) => {
+              if (a.available && !b.available) {
+                return -1;
+              }
+              if (!a.available && b.available) {
+                return 1;
+              }
+              return 0;
+            })
+            .map((boat) => (
+              <div
+                key={boat.id}
+                className={`boatContainer ${
+                  user && !boat.available ? "rented" : ""
+                }`}
+              >
+                {user && !boat.available && (
+                  <div className="rentedBanner">Rented</div>
+                )}
+                <img
+                  src={`https://localhost:7087/Images/${boat.imageName}`}
+                  alt="Slika"
+                  onClick={() => openModal(boat.imageName)}
+                />
+                <div class="desc">
+                  <p className="name">{boat.name}</p>
+                  <div className="typePrice">
+                    <p>
+                      <span>Type:</span> {boat.type}
+                    </p>
+                    <p>
+                      For <span>{boat.price}$</span> per day
+                    </p>
                   </div>
-                )}
-                {!user && (
-                  <p className="dugmici">Login for more information</p>
-                )}
+                  {user && (
+                    <div className="dugmici">
+                      <Link
+                        to={`/boatDetails/${boat.id}`}
+                        className="detailsButton"
+                      >
+                        Details
+                      </Link>
+                    </div>
+                  )}
+                  {!user && (
+                    <p className="dugmici">Login for more information</p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))
+            ))
         ) : (
           <h1 style={{ textAlign: "center" }}>
             There are no boats matching the criteria
           </h1>
+        )}
+        {isModalOpen && (
+          <div className="modal" onClick={closeModal}>
+            <span className="close">&times;</span>
+            <img
+              className="modalContent"
+              src={`https://localhost:7087/Images/${selectedImage}`}
+              alt="Expanded boat"
+            />
+            <div className="caption">{selectedImage}</div>
+          </div>
         )}
       </div>
     </>

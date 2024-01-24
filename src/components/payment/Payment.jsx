@@ -16,24 +16,30 @@ function Payment() {
     if (userId && boatId && startDate && endDate) {
       Rent(userId, boatId, startDate, endDate);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function Rent(userId, boatId, startDate, endDate) {
     try {
-      const response = await axios.post("https://localhost:7087/api/Rent/RentBoat", {
-        userId,
-        boatId,
-        datumIznajmljivanja: startDate,
-        datumKrajaIznajmljivanja: endDate,
-      });
+      const response = await axios.post(
+        "https://localhost:7087/api/Rent/RentBoat",
+        {
+          userId,
+          boatId,
+          datumIznajmljivanja: startDate,
+          datumKrajaIznajmljivanja: endDate,
+        }
+      );
       if (response.status === 200 || response.status === 201) {
-        const updateBoatResponse = await axios.put(`https://localhost:7087/api/Boat/updateAvailable/${boatId}`, {
-            available: false
-        });
+        const updateBoatResponse = await axios.put(
+          `https://localhost:7087/api/Boat/updateAvailable/${boatId}`,
+          {
+            available: false,
+          }
+        );
 
         console.log(updateBoatResponse);
-    }
+      }
       alert("Rent successfully initiated!");
       navigate("/boats");
     } catch (error) {
@@ -43,7 +49,7 @@ function Payment() {
 
   return (
     <div className="paymentContainer">
-      <h1>Plaćanje je uspešno.</h1>
+      <h1>Payment is successful.</h1>
     </div>
   );
 }

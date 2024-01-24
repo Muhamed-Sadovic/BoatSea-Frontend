@@ -84,6 +84,7 @@ function CreateBoat() {
 
       console.log(response.data);
       alert("Successfully created boat for rent");
+      window.location.reload();
     } catch (e) {
       console.error(e.response.data);
     }

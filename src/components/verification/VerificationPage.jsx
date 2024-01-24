@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./VerificationPage.css";
 import axios from "axios";
+import "./VerificationPage.css";
 
 function VerificationPage() {
   const [code, setCode] = useState();
@@ -26,29 +26,27 @@ function VerificationPage() {
       alert("Successful verification, go to login now!");
       navigate("/login");
     } catch (e) {
-      alert("Wrong code, try again!")
+      alert("Wrong code, try again!");
       console.error("error" + e);
     }
   };
 
   return (
-    <>
-      <div className="verificationContainer">
-        <h2>Please enter the code from gmail</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <strong>Code</strong>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Code"
-            name="code"
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </>
+    <div className="verificationContainer">
+      <h2>Please enter the code from gmail</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <strong>Code</strong>
+        </label>
+        <input
+          type="text"
+          placeholder="Enter Code"
+          name="code"
+          onChange={(e) => setCode(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   );
 }
 

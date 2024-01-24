@@ -14,6 +14,7 @@
   width: 400px;
   height: 450px;
   margin-top: 20px;
+  cursor: pointer;
 }
 .boatDetailsContainer .details {
   display: flex;
@@ -47,15 +48,39 @@
   background-color: rgb(26, 188, 209);
   color: white;
   border: none;
-  margin: 0px 10px;
+  margin: 5px 10px;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
 }
+.boatDetailsContainer .details .dugmici button:hover {
+  background-color: rgb(47, 223, 246);
+  transition: 1s;
+}
+.boatDetailsContainer .details .noRent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boatDetailsContainer .details .noRent button{
+  width: 100px;
+  height: 50px;
+  color: white;
+  border: none;
+  margin: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.boatDetailsContainer .details .noRent button:disabled {
+  background-color: #ccc; /* Siva boja za onemogućeno dugme */
+  color: #666;
+  cursor: not-allowed;
+}
 #crvena {
   background-color: rgb(246, 44, 44);
 }
-#crvena:hover{
+#crvena:hover {
   background-color: red;
   transition: 1s;
 }

@@ -13,6 +13,7 @@ function Register() {
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
   const [confirmPasswordErrorMessage, setConfirmPasswordErrorMessage] =
     useState(null);
+  const [imageErrorMessage, setImageErrorMessage] = useState(null);
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
   const navigate = useNavigate();
@@ -65,6 +66,14 @@ function Register() {
       return;
     } else {
       setConfirmPasswordErrorMessage(null);
+    }
+
+    if (!file) {
+      setImageErrorMessage("Please upload an image");
+      isValid = false;
+      return;
+    } else {
+      setImageErrorMessage(null);
     }
 
     if (password !== confirmPassword) {
@@ -172,6 +181,7 @@ function Register() {
             <strong>Select Image</strong>
           </label>
           <input type="file" id="image" name="image" onChange={PromenaSlike} />
+          {imageErrorMessage && <p>{imageErrorMessage}</p>}
           <button type="submit">Register</button>
         </form>
         <p>Already Have an Account</p>
