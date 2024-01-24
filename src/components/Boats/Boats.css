@@ -1,4 +1,4 @@
-.searchbar{
+.searchbar {
   margin: 2%;
   margin-top: 80px;
   width: 96%;
@@ -9,12 +9,12 @@
   justify-content: center;
   align-items: center;
 }
-.searchbar form{
+.searchbar form {
   width: 50%;
   display: flex;
   justify-content: space-evenly;
 }
-.searchbar form label{
+.searchbar form label {
   font-size: 20px;
   font-weight: bold;
 }
@@ -27,7 +27,7 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.tre{
+.tre {
   text-align: center;
   margin: 2%;
   background-color: white;
@@ -53,48 +53,55 @@
   text-align: center;
   padding-left: 0px;
 }
-.boatContainer .desc .name{
-    font-size: 25px;
-    margin: 0;
-    font-weight: bold;
+.boatContainer .desc .name {
+  font-size: 25px;
+  margin: 0;
+  font-weight: bold;
 }
-.boatContainer .desc .typePrice{
-    display: flex;
-    justify-content: space-around;
+.boatContainer .desc .typePrice {
+  display: flex;
+  justify-content: space-around;
 }
-.boatContainer .desc .descc{
-    text-align: left;
-    margin-left: 10px;
+.boatContainer .desc .typePrice p {
+  font-size: 18px;
 }
-.boatContainer .dugmici{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.boatContainer .desc .typePrice p span{
+  font-weight: bold;
 }
-.boatContainer .dugmici .detailsButton{
-    width: 100px;
-    height: 50px;
-    background-color: rgb(26, 188, 209);
-    color: white;
-    border: none;
-    margin: 20px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.boatContainer .dugmici {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.boatContainer .dugmici .detailsButton {
+  width: 100px;
+  height: 50px;
+  background-color: rgb(26, 188, 209);
+  color: white;
+  border: none;
+  margin: 20px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.boatContainer .dugmici .detailsButton:hover {
+  background-color: rgb(47, 223, 246);
+  transition: 1s;
+}
+
 @media screen and (max-width: 1180px) {
   .searchbar form {
     width: 70%;
   }
 }
 @media screen and (max-width: 970px) {
-  .boatsContainer{
+  .boatsContainer {
     justify-content: center;
   }
-  .boatContainer{
+  .boatContainer {
     width: 600px;
   }
 }
@@ -104,10 +111,10 @@
   }
 }
 @media screen and (max-width: 600px) {
-  .searchbar{
+  .searchbar {
     height: 200px;
   }
-  .searchbar form{
+  .searchbar form {
     display: flex;
     flex-direction: column;
     width: 50%;

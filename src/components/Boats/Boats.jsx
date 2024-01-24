@@ -101,8 +101,8 @@ function Boats() {
               <div class="desc">
                 <p className="name">{boat.name}</p>
                 <div className="typePrice">
-                  <p>Type: {boat.type}</p>
-                  <p>From {boat.price}$ per day</p>
+                  <p><span>Type:</span> {boat.type}</p>
+                  <p>From <span>{boat.price}$</span> per day</p>
                 </div>
                 {user && (
                   <div className="dugmici">

@@ -51,11 +51,15 @@
     border-radius: 5px;
     padding: 20px;
     border: none;
-    background-color: #3798b5;
+    background-color: rgb(26, 188, 209);
     color: white;
     cursor: pointer;
 }
 .createBoatContainer form .buttonDiv p{
     color: red;
+}
+.createBoatContainer form .buttonDiv button:hover{
+    background-color: rgb(47, 223, 246);
+    transition: 1s;
 }
 

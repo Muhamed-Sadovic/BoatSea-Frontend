@@ -48,7 +48,6 @@ function BoatDetails() {
 
   const redirectToCheckout = async () => {
     try {
-      // Izračunajte ukupnu cenu na osnovu broja dana i cene po danu
       const daysRented = (endDate - startDate) / (1000 * 3600 * 24);
       const totalPrice = daysRented * boat.price;
       const startDateISO = new Date(startDate).toISOString();
@@ -61,7 +60,6 @@ function BoatDetails() {
       console.log("Boat id: ", id);
 
       const response = await axios.post(`${url}create-checkout-session`, {
-        // Pošaljite potrebne informacije na backend, uključujući ukupnu cenu
         price: totalPrice,
         successUrl: `${window.location.origin}/payment?userId=${user.user.id}&boatId=${id}&startDate=${encodedStartDate}&endDate=${encodedEndDate}`,
         cancelUrl: `${window.location.origin}/boatDetails/${boat.id}`,
@@ -95,7 +93,7 @@ function BoatDetails() {
 
   function handleDeleteBoat(id) {
     const isConfirmed = window.confirm(
-      "Da li ste sigurni da želite da obrišete ovaj brod?"
+      "Are you sure you want to delete this ship?"
     );
     if (isConfirmed) {
       try {
@@ -104,7 +102,7 @@ function BoatDetails() {
             Authorization: `Bearer ${user.token}`,
           },
         });
-        alert("Uspesno ste obrisali brod!");
+        alert("You have successfully deleted the ship!");
         navigate("/boats");
       } catch (e) {
         console.error(e);

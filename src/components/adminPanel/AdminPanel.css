@@ -1,104 +1,96 @@
-.adminPanelContainer{
-    margin-top: 70px;
-    width: 100%;
-    height: 500px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.adminPanelContainer {
+  margin-top: 70px;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
-.podaci{
-    border: 2px solid yellow;
-    background-color: white;
-    opacity: 0.8;
-    width: 25%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 10px;
+.podaci {
+  background-color: white;
+  opacity: 0.8;
+  width: 25%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
 }
-.podaci img{
-    border-radius: 50%;
-    width: 140px;
-    height: 140px;
+.podaci img {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
 }
-.podaci p{
-    margin-bottom: 0px;
-    max-width: 100%;
-    word-wrap: break-word;
+.podaci p {
+  margin-bottom: 0px;
+  max-width: 100%;
+  word-wrap: break-word;
 }
-.podaci p span{
-    font-weight: bold;
+.podaci p span {
+  font-weight: bold;
 }
-.users{
-    width: 65%;
-    background-color: white;
-    opacity: 0.8;
+.users {
+  width: 65%;
+  background-color: white;
+  opacity: 0.8;
 }
-.users h3{
-    text-align: center;
+.users h3 {
+  text-align: center;
 }
-.users table{
-    width: 100%;
-    border: 2px solid red;
-    border-collapse: collapse;
+.users table {
+  width: 100%;
+  border: 2px solid red;
+  border-collapse: collapse;
 }
-.users table thead{
-    text-align: left;
-    background-color: aqua;
-    height: 20px;
-    padding: 10px;
+.users table thead {
+  text-align: left;
+  background-color: rgb(26, 188, 209);
+  height: 20px;
+  padding: 10px;
 }
-.users table th,td{
-    padding: 10px;
+.users table th,
+td {
+  padding: 10px;
 }
-.users table tbody button{
-    background-color: red;
-    border: none;
-    margin-left: 13px;
-    color: white;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
+.users table tbody button {
+  background-color: red;
+  border: none;
+  margin-left: 13px;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
 }
 @media screen and (max-width: 700px) {
-    .users table thead th,td{
-        font-size: 12px;
-    }
-    .users table tbody button{
-        width: 20px;
-        height: 20px;
-    }
-    .podaci img{
-        width: 90px;
-        height: 90px;
-    }
-    .podaci p{
-        font-size: 12px;
-    }
+  .users table thead th,
+  td {
+    font-size: 12px;
   }
-  /* @media screen and (max-width: 575px) {
-    .users table thead th,td{
-        font-size: 8px;
-    }
-    .users table tbody button{
-        width: 18px;
-        height: 18px;
-    }
-  } */
-  @media screen and (max-width: 580px) {
-    .adminPanelContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .adminPanelContainer .podaci{
-        width: 60%;
-        margin-bottom: 20px;
-    }
-    .adminPanelContainer .users{
-        width: 100%;
-    }
+  .users table tbody button {
+    width: 20px;
+    height: 20px;
   }
+  .podaci img {
+    width: 90px;
+    height: 90px;
+  }
+  .podaci p {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 580px) {
+  .adminPanelContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .adminPanelContainer .podaci {
+    width: 60%;
+    margin-bottom: 20px;
+  }
+  .adminPanelContainer .users {
+    width: 100%;
+  }
+}

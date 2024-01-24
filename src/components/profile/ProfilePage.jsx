@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfilePage.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
@@ -47,13 +47,13 @@ export default function ProfilePage() {
 
   console.log(rentedBoats);
 
-  function handleDeleteBoat(id){
+  function handleDeleteBoat(id) {
     const isConfirmed = window.confirm(
       "Da li ste sigurni da želite da otkazete ovaj rent?"
     );
     if (isConfirmed) {
       try {
-        axios.delete(`https://localhost:7087/api/Rent/CancelRent/${id}`)
+        axios.delete(`https://localhost:7087/api/Rent/CancelRent/${id}`);
         alert("Uspesno ste otkazali rent!");
         navigate("/profile");
       } catch (e) {

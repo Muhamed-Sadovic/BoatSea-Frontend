@@ -162,6 +162,9 @@ function Register() {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
+          <label>
+            <strong>Select</strong>
+          </label>
           <input type="file" id="image" name="image" onChange={PromenaSlike} />
           <button type="submit">Register</button>
         </form>

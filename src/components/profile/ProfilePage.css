@@ -1,28 +1,28 @@
-.userContainer{
-    margin-top: 70px;
-    width: 100%;
-    height: 600px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.userContainer {
+  margin-top: 70px;
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
-.userContainer .podaci{
-    border: 2px solid yellow;
-    background-color: white;
-    width: 25%;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+.userContainer .podaci {
+  border: 2px solid yellow;
+  background-color: white;
+  width: 25%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
-.rentedBoats{
-    width: 65%;
-    background-color: white;
-    opacity: 0.8;
-    height: 650px;
+.rentedBoats {
+  width: 65%;
+  background-color: white;
+  opacity: 0.8;
+  height: 650px;
 }
-.rentedBoats h3{
-    text-align: center;
+.rentedBoats h3 {
+  text-align: center;
 }
 .rentedBoats .rentedBoat {
   display: flex;
@@ -32,23 +32,38 @@
   justify-content: space-around;
 }
 .rentedBoats .rentedBoat p {
-    margin-left: 10px;
+  margin-left: 10px;
 }
-.rentedBoats .rentedBoat button{
-    width: 100px;
-    height: 50px;
-    background-color: red;
-    color: white;
-    border: none;
-    margin: 0px 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    text-decoration: none;
+.rentedBoats .rentedBoat button {
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  color: white;
+  border: none;
+  margin: 0px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-@media screen and (max-width: 525px) {
-    .rentedBoat img{
-      width: 200px;
-      height: 200px;
-    }
+@media screen and (max-width: 620px) {
+  .userContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
   }
+  .userContainer .podaci{
+    margin-bottom: 20px;
+    width: 50%;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 525px) {
+  .rentedBoat img {
+    width: 200px;
+    height: 200px;
+  }
+}
+
