@@ -43,18 +43,22 @@ function AdminPanel() {
     setAllUsers(responseData);
   }
 
-  function DeleteUser(id) {
+  async function DeleteUser(id) {
     const isConfirmed = window.confirm(
-      "Da li ste sigurni da želite da obrišete ovog korisnika?"
+      "Are you sure you want to delete this user?"
     );
     if (isConfirmed) {
       try {
-        axios.delete(`${url}deleteUser/${id}`, {
+        await axios.delete(`${url}deleteUser/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+        alert("User successfully deleted.");
+
+        window.location.reload();
       } catch (e) {
+        alert("An error occurred while trying to delete the user.");
         console.error(e);
       }
     }
@@ -63,13 +67,17 @@ function AdminPanel() {
   return (
     <div className="adminPanelContainer">
       <div className="podaci">
-        <h2 style={{marginTop: 0}}>Admin</h2>
+        <h2 style={{ marginTop: 0 }}>Admin</h2>
         <img
           src={`https://localhost:7087/Images/${adminData.imageName}`}
           alt=""
         />
-        <p><span>Name:</span> {adminData.name}</p>
-        <p><span>Email:</span> {adminData.email}</p>
+        <p>
+          <span>Name:</span> {adminData.name}
+        </p>
+        <p>
+          <span>Email:</span> {adminData.email}
+        </p>
       </div>
       <div className="users">
         <h3>Users</h3>

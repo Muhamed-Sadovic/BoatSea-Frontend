@@ -6,8 +6,8 @@ import axios from "axios";
 
 function VerificationPage() {
   const [code, setCode] = useState();
-  const navigate = useNavigate();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   console.log(code);
   const handleSubmit = async (e) => {
@@ -23,11 +23,11 @@ function VerificationPage() {
         }
       );
       console.log(response.data);
-      alert("Uspesna verifikacija");
+      alert("Successful verification, go to login now!");
       navigate("/login");
     } catch (e) {
-      alert("Pogresan kod, pokusajte ponovo!")
-      console.error("ad,nv nasd" + e);
+      alert("Wrong code, try again!")
+      console.error("error" + e);
     }
   };
 

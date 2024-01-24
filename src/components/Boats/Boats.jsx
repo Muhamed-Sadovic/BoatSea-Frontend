@@ -21,23 +21,6 @@ function Boats() {
   const [name, setName] = useState("");
   const [filteredBoats, setFilteredBoats] = useState([]);
 
-  // useEffect(() => {
-  //   async function fetchBoats() {
-  //     try {
-  //       let response;
-  //       if (type === "" || type === "All") {
-  //         response = await axios.get(`${url}GetAllBoats`);
-  //       } else {
-  //         response = await axios.get(`${url}GetBoatsByType/${type}`);
-  //       }
-  //       setAllBoats(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching boats:", error);
-  //     }
-  //   }
-  //   fetchBoats();
-  // }, [type]);
-
   useEffect(() => {
     const filtered = allBoats.filter((boat) =>
       boat.name.toLowerCase().includes(name.toLowerCase())
@@ -90,7 +73,7 @@ function Boats() {
           </select>
         </form>
       </div>
-      <div className={allBoats.length > 0 ? "boatsContainer" : "tre"}>
+      <div className={filteredBoats.length > 0 ? "boatsContainer" : "tre"}>
         {filteredBoats.length > 0 ? (
           filteredBoats.map((boat) => (
             <div key={boat.id} className="boatContainer">
@@ -102,7 +85,7 @@ function Boats() {
                 <p className="name">{boat.name}</p>
                 <div className="typePrice">
                   <p><span>Type:</span> {boat.type}</p>
-                  <p>From <span>{boat.price}$</span> per day</p>
+                  <p>For <span>{boat.price}$</span> per day</p>
                 </div>
                 {user && (
                   <div className="dugmici">
@@ -114,12 +97,15 @@ function Boats() {
                     </Link>
                   </div>
                 )}
+                {!user && (
+                  <p className="dugmici">Login for more information</p>
+                )}
               </div>
             </div>
           ))
         ) : (
           <h1 style={{ textAlign: "center" }}>
-            Nema čamaca koji odgovaraju kriterijumima
+            There are no boats matching the criteria
           </h1>
         )}
       </div>

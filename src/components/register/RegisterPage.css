@@ -5,7 +5,7 @@
   flex-direction: column;
   background-color: white;
   width: 30%;
-  height: 640px;
+  height: 680px;
   margin: auto;
   margin-top: 10%;
   border-radius: 20px;
@@ -32,14 +32,18 @@
     margin-top: 5px;
 }
 .registerContainer form button{
-    width: 100%;
+    width: 90%;
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 8px auto;
+}
+.registerContainer form button:hover{
+  background-color: #4dde52;
+  transition: 1s;
 }
 .registerContainer form p{
   margin: 0px;

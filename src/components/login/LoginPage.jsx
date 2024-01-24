@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./LoginPage.css";
-import axios from "axios";
 import { useContext } from "react";
 import { MyContext } from "../../context/myContext";
+import axios from "axios";
+import "./LoginPage.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -66,29 +66,27 @@ function Login() {
       setEmail("");
       setPassword("");
       if (role === "Admin") {
-      navigate('/adminpanel');
-    } else {
-      navigate('/profile');
-    }
+        navigate("/adminpanel");
+      } else {
+        navigate("/profile");
+      }
     } catch (error) {
       console.log("Error", error);
-      if (error.response) {    
-        if(error.response.status === 404) {
-          setError("Nevalidan zahtev. Proverite unesene podatke ");
-        } else if(error.response.status === 400) {
-          setError("Nevalidan zahtev. Proverite unesene podatke.");
+      if (error.response) {
+        if (error.response.status === 404) {
+          setError("Invalid request. Check the entered data.");
+        } else if (error.response.status === 400) {
+          setError("Invalid request. Check the entered data.");
         } else {
-          setError("Došlo je do greške na serveru.");
+          setError("A server error has occurred.");
         }
       } else {
-        setError("Nešto je pošlo naopako. Pokušajte ponovo kasnije.");
+        setError("Something went wrong. Please try again later");
       }
     } finally {
       setLoading(false);
     }
   };
-
-  
 
   return (
     <>

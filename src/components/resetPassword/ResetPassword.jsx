@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import './ResetPassword.css'
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -49,7 +50,7 @@ function ResetPassword() {
           newPassword: password,
         }
       );
-      alert("Vaša lozinka je uspešno promenjena.");
+      alert("Your password has been successfully changed.");
       navigate("/login");
     } catch (error) {
       console.error("Greška: ", error);
@@ -58,7 +59,7 @@ function ResetPassword() {
 
   return (
     <>
-      <div className="loginContainer">
+      <div className="resetPassContainer">
         <h1>Please provide your new password</h1>
         <form onSubmit={handleSubmit}>
           <input

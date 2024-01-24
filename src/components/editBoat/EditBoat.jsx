@@ -1,21 +1,11 @@
 import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import { useNavigate, useParams, Link } from "react-router-dom";
-import { MyContext } from "../../context/myContext";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 const url = "https://localhost:7087/api/Boat/";
 
 function EditBoat() {
   const { id } = useParams();
-  const { user } = useContext(MyContext);
   const navigate = useNavigate();
-  const [boat, setBoat] = useState({
-    id: "",
-    name: "",
-    type: "",
-    price: "",
-    imageName: "",
-    description: "",
-  });
   const [boatName, setBoatName] = useState("");
   const [type, setType] = useState("Sail");
   const [price, setPrice] = useState("");
@@ -29,7 +19,6 @@ function EditBoat() {
       try {
         const response = await axios.get(`${url}GetBoatById/${id}`);
         const responseData = response.data;
-        setBoat(responseData);
         setBoatName(responseData.name);
         setType(responseData.type);
         setPrice(responseData.price);

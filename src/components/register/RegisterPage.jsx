@@ -112,6 +112,12 @@ function Register() {
       navigate(`/verifyAccount/${id}`);
     } catch (e) {
       console.log("error" + e);
+      if (e.response) {
+        if (e.response.status === 404) {
+          alert("This account already exists, try with another one!")
+        } else if (e.response.status === 400) {
+          alert("This account already exists, try with another one!");
+        }}
     }
   };
 
@@ -163,7 +169,7 @@ function Register() {
           />
           {confirmPasswordErrorMessage && <p>{confirmPasswordErrorMessage}</p>}
           <label>
-            <strong>Select</strong>
+            <strong>Select Image</strong>
           </label>
           <input type="file" id="image" name="image" onChange={PromenaSlike} />
           <button type="submit">Register</button>

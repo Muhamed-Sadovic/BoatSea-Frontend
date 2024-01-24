@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./ProfilePage.css";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
-  const navigate = useNavigate();
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -49,13 +48,13 @@ export default function ProfilePage() {
 
   function handleDeleteBoat(id) {
     const isConfirmed = window.confirm(
-      "Da li ste sigurni da želite da otkazete ovaj rent?"
+      "Are you sure you want to cancel this rental?"
     );
     if (isConfirmed) {
       try {
         axios.delete(`https://localhost:7087/api/Rent/CancelRent/${id}`);
-        alert("Uspesno ste otkazali rent!");
-        navigate("/profile");
+        alert("You have successfully canceled your rent!");
+        window.location.reload();
       } catch (e) {
         console.error(e);
       }
@@ -65,32 +64,46 @@ export default function ProfilePage() {
   return (
     <div className="userContainer">
       <div className="podaci">
+        <h2 style={{ marginTop: 0 }}>User</h2>
         <img
           src={`https://localhost:7087/Images/${userData.imageName}`}
           alt=""
         />
-        <p>Name: {userData.name}</p>
-        <p>Email: {userData.email}</p>
+        <p>
+          <span>Name:</span> {userData.name}
+        </p>
+        <p>
+          <span>Email:</span> {userData.email}
+        </p>
+        <Link to={`/boatDetails`} className="detailsButton">
+          Edit
+        </Link>
       </div>
       <div className="rentedBoats">
-        <h3>Your rents</h3>
-        <div className="rentedBoat">
-          {rentedBoats.map((boat) => (
-            <div>
-              <img
-                src={`https://localhost:7087/Images/${boat.imageName}`}
-                alt=""
-                width="300px"
-                height="300px"
-              />
-              <p>Name: {boat.name}</p>
-              <p>Type: {boat.type}</p>
-              <p>Start: {boat.startDate}</p>
-              <p>End: {boat.endDate}</p>
-              <button onClick={() => handleDeleteBoat(boat.id)}>Cancel</button>
-            </div>
-          ))}
-        </div>
+        <h1>Your rents</h1>
+        {rentedBoats.length > 0 ? (
+          <div className="rentedBoat">
+            {rentedBoats.map((boat) => (
+              <div>
+                <img
+                  src={`https://localhost:7087/Images/${boat.imageName}`}
+                  alt=""
+                  width="300px"
+                  height="300px"
+                />
+                <p>Name: {boat.name}</p>
+                <p>Type: {boat.type}</p>
+                <p>Start: {boat.startDate}</p>
+                <p>End: {boat.endDate}</p>
+                <button onClick={() => handleDeleteBoat(boat.id)}>
+                  Cancel
+                </button>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <h3>You have currently no rents</h3>
+        )}
       </div>
     </div>
   );

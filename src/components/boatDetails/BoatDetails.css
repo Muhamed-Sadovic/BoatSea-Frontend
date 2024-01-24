@@ -1,7 +1,7 @@
 .boatDetailsContainer {
   margin-top: 80px;
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.9;
   width: 80%;
   margin: auto;
   margin-top: 80px;
@@ -53,7 +53,11 @@
   text-decoration: none;
 }
 #crvena {
+  background-color: rgb(246, 44, 44);
+}
+#crvena:hover{
   background-color: red;
+  transition: 1s;
 }
 .boatDetailsContainer .details .dugmici .detailsButton {
   width: 100px;
