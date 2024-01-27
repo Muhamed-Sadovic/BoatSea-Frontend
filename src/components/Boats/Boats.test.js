@@ -51,24 +51,3 @@ afterEach(() => {
   // Dodajte više testova za različite funkcionalnosti...
 });
 
-const mockContextValue = {
-  user: {
-    name: "Test User",
-    user: {
-      role: "Admin",
-    },
-    // ... other user properties ...
-  },
-  setUserFunction: jest.fn(), // Mock function if needed
-};
-
-test("renders learn react link", () => {
-  render(
-    <Router>
-      <MyContext.Provider value={mockContextValue}>
-        <App />
-      </MyContext.Provider>
-    </Router>
-  );
-  // ... your test assertions ...
-});

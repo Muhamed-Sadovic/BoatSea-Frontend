@@ -39,22 +39,22 @@ function App() {
 
   return (
     <>
-      <Navbar />
       <Routes>
-        <Route path="/" Component={HomePage} />
-        <Route path="/login" Component={Login} />
-        <Route path="/register" Component={Register} />
-        <Route path="/profile" Component={ProfilePage} />
-        <Route path="/boatDetails/:id" Component={BoatDetails} />
-        <Route path="/editBoat/:id" Component={EditBoat} />
-        <Route path="/verifyAccount/:id" Component={VerificationPage} />
-        <Route path="/forgot-password" Component={ForgotPassword} />
-        <Route path="/reset-password/:token" Component={ResetPassword} />
-        <Route path="/adminpanel" Component={AdminPanel} />
-        <Route path="/createboat" Component={CreateBoat} />
-        <Route path="/boats" Component={Boats} />
-        <Route path="/payment" Component={Payment} />
-        <Route path="/editUser/:id" Component={EditUser} />
+      <Navbar />
+        <Route path="/" element={HomePage} />
+        <Route path="/login" element={Login} />
+        <Route path="/register" element={Register} />
+        <Route path="/profile" element={ProfilePage} />
+        <Route path="/boatDetails/:id" element={BoatDetails} />
+        <Route path="/editBoat/:id" element={EditBoat} />
+        <Route path="/verifyAccount/:id" element={VerificationPage} />
+        <Route path="/forgot-password" element={ForgotPassword} />
+        <Route path="/reset-password/:token" element={ResetPassword} />
+        <Route path="/adminpanel" element={AdminPanel} />
+        <Route path="/createboat" element={CreateBoat} />
+        <Route path="/boats" element={Boats} />
+        <Route path="/payment" element={Payment} />
+        <Route path="/editUser/:id" element={EditUser} />
       </Routes>
       <Footer />
     </>

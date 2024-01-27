@@ -1,17 +1,17 @@
+import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import Logo from "./Logo";
-import axios from "axios";
 import { useContext } from "react";
 import { MyContext } from "../../context/myContext";
 import { IoLogOutOutline } from "react-icons/io5";
 import { useState } from "react";
+import Logo from "./Logo";
+import axios from "axios";
 import "./Navbar.css";
 
 function Navbar() {
-  const { user, setUserFunction } = useContext(MyContext);
   const navigate = useNavigate();
+  const { user, setUserFunction } = useContext(MyContext);
   const isAdmin = user && user.user.role === "Admin";
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const logoutUserHandler = () => {

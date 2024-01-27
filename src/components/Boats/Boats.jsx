@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { MyContext } from "../../context/myContext";
@@ -115,7 +116,7 @@ function Boats() {
                   alt="Slika"
                   onClick={() => openModal(boat.imageName)}
                 />
-                <div class="desc">
+                <div className="desc">
                   <p className="name">{boat.name}</p>
                   <div className="typePrice">
                     <p>
