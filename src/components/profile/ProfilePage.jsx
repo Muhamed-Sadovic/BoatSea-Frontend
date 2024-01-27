@@ -93,10 +93,18 @@ export default function ProfilePage() {
                   width="300px"
                   height="300px"
                 />
-                <p>Name: {boat.name}</p>
-                <p>Type: {boat.type}</p>
-                <p>Start: {boat.startDate}</p>
-                <p>End: {boat.endDate}</p>
+                <p>
+                  <span>Name:</span> {boat.name}
+                </p>
+                <p>
+                  <span>Type:</span> {boat.type}
+                </p>
+                <p>
+                  <span>Start:</span> {boat.startDate}
+                </p>
+                <p>
+                  <span>End:</span> {boat.endDate}
+                </p>
                 <button onClick={() => handleDeleteBoat(boat.id)}>
                   Cancel
                 </button>

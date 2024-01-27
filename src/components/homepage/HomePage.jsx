@@ -12,6 +12,8 @@ function HomePage() {
             More than 10+ private yacht rentals and bareboat charters near me
             and worldwide for your next boating trip
           </p>
+          <p>BoatSea is the leader in peer-to-peer yacht charters.Find a yacht to charter at a very low price, or offer your yacht for charter and earn extra income. 
+            BoatSea offers you the chance to charter yachts</p>
           <p>Go to register page to rent a boat/yacht</p>
         </div>
         <div className="image-container">

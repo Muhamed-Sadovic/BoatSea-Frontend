@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import HomePage from "./components/homepage/HomePage";

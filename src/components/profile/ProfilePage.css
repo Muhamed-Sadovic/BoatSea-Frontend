@@ -60,16 +60,23 @@
 .rentedBoats .rentedBoat p {
   margin-left: 10px;
 }
+.rentedBoats .rentedBoat p span{
+  font-weight: bold;
+}
 .rentedBoats .rentedBoat button {
   width: 100px;
   height: 50px;
-  background-color: red;
+  background-color: rgb(246, 44, 44);
   color: white;
   border: none;
   margin: 0px 10px;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
+}
+.rentedBoats .rentedBoat button:hover{
+  background-attachment: red;
+  transition: 1s;
 }
 
 @media screen and (max-width: 620px) {

@@ -47,6 +47,7 @@
 @media screen and (max-width: 990px) {
   .container {
     margin-left: 100px;
+    height: 600px;
   }
 }
 @media screen and (max-width: 800px) {
@@ -58,13 +59,14 @@
   }
   .container {
     width: 80%;
-    margin-left: 10px;
+    margin-left: 0;
     margin-top: 80px;
-    height: 300px;
+    height: 420px;
   }
   .image-container {
     width: 85%;
     margin-top: 40px;
+    margin-left: 0;
   }
   .image-container img {
     width: 100%;

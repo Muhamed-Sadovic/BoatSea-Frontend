@@ -40,7 +40,6 @@
 }
 .users table {
   width: 100%;
-  border: 2px solid red;
   border-collapse: collapse;
 }
 .users table thead {
