@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "clear-jest-cache": "jest --clearCache",
     "eject": "react-scripts eject"
   },

@@ -11,8 +11,6 @@ describe("Boats Component", () => {
     axios.get.mockResolvedValue({ data: [] });
 
     render(<Boats />);
-
-    // Provera da li se prikazuje odgovarajuća poruka
     const message = await screen.findByText(
       "There are no boats matching the criteria"
     );
@@ -20,7 +18,6 @@ describe("Boats Component", () => {
   });
 
   it("prikazuje čamce nakon uspešnog dohvatanja podataka", async () => {
-    // Simuliranje odgovora sa podacima
     const boatsData = [
       {
         id: 1,
@@ -34,8 +31,6 @@ describe("Boats Component", () => {
     axios.get.mockResolvedValue({ data: boatsData });
 
     render(<Boats />);
-
-    // Provera da li se čamci prikazuju
     await waitFor(() => {
       const boatName = screen.getByText("Speedboat");
       expect(boatName).toBeInTheDocument();
@@ -45,6 +40,5 @@ describe("Boats Component", () => {
 
 afterEach(() => {
   jest.resetAllMocks();
-  // Dodajte više testova za različite funkcionalnosti...
 });
 
