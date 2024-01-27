@@ -3,9 +3,6 @@ import { render, screen, waitFor } from "@testing-library/react";
 import axios from "axios";
 import Boats from "./Boats";
 import "@testing-library/jest-dom";
-import { MyContext } from "../../context/myContext";
-import App from "../../App";
-import { BrowserRouter as Router } from "react-router-dom";
 jest.mock("axios");
 
 describe("Boats Component", () => {

@@ -3,7 +3,6 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
   },
-  // Ostale Jest konfiguracije...
   // import React from 'react';
   // import { render, screen } from '@testing-library/react';
   // import App from './App';
