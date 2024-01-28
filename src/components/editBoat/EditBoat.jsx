@@ -103,6 +103,7 @@ function EditBoat() {
         }
       );
 
+      console.log(response.data);
       alert("Successfully updated boat for rent");
       navigate("/boats")
     } catch (e) {
