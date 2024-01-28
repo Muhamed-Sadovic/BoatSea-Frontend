@@ -45,7 +45,7 @@ function ResetPassword() {
 
     try {
       await axios.post(
-        `http://muhamedsadovic-001-site1.ftempurl.com/api/User/resetPassword/${token}`,
+        `https://muhamedsadovic-001-site1.ftempurl.com/api/User/resetPassword/${token}`,
         {
           newPassword: password,
         }

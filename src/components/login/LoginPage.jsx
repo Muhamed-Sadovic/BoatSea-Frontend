@@ -42,7 +42,7 @@ function Login() {
 
     try {
       const response = await axios.post(
-        "http://muhamedsadovic-001-site1.ftempurl.com/api/User/login",
+        "https://muhamedsadovic-001-site1.ftempurl.com/api/User/login",
         {
           email: email,
           password: password,

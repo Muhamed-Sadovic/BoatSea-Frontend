@@ -102,7 +102,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://muhamedsadovic-001-site1.ftempurl.com/api/User/register",
+        "https://muhamedsadovic-001-site1.ftempurl.com/api/User/register",
         formData,
         {
           headers: {

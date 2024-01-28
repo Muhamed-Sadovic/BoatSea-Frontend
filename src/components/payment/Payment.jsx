@@ -22,7 +22,7 @@ function Payment() {
   async function Rent(userId, boatId, startDate, endDate) {
     try {
       const response = await axios.post(
-        "http://muhamedsadovic-001-site1.ftempurl.com/api/Rent/RentBoat",
+        "https://muhamedsadovic-001-site1.ftempurl.com/api/Rent/RentBoat",
         {
           userId,
           boatId,
@@ -32,7 +32,7 @@ function Payment() {
       );
       if (response.status === 200 || response.status === 201) {
         const updateBoatResponse = await axios.put(
-          `http://muhamedsadovic-001-site1.ftempurl.com/api/Boat/updateAvailable/${boatId}`,
+          `https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/updateAvailable/${boatId}`,
           {
             available: false,
           }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminPanel.css";
-const url = "http://muhamedsadovic-001-site1.ftempurl.com/api/User/";
+const url = "https://muhamedsadovic-001-site1.ftempurl.com/api/User/";
 
 function AdminPanel() {
   let token = "";

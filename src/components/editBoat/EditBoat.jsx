@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-const url = "http://muhamedsadovic-001-site1.ftempurl.com/api/Boat/";
+const url = "https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/";
 
 function EditBoat() {
   const { id } = useParams();
@@ -93,7 +93,7 @@ function EditBoat() {
 
     try {
       const response = await axios.put(
-        `http://muhamedsadovic-001-site1.ftempurl.com/api/Boat/UpdateBoat/${id}`,
+        `https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/UpdateBoat/${id}`,
         formData,
         {
           headers: {

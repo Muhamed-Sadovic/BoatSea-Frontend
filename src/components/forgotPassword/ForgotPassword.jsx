@@ -9,7 +9,7 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://muhamedsadovic-001-site1.ftempurl.com/api/User/forgotPassword", {
+      await axios.post("https://muhamedsadovic-001-site1.ftempurl.com/api/User/forgotPassword", {
         email,
       });
       alert("Link za resetovanje lozinke je poslat na vaš email.");

@@ -37,7 +37,7 @@ export default function ProfilePage() {
     const fetchRentedBoats = async () => {
       try {
         const response = await axios.get(
-          `http://muhamedsadovic-001-site1.ftempurl.com/api/Rent/GetRentsByUser/${user.id}`
+          `https://muhamedsadovic-001-site1.ftempurl.com/api/Rent/GetRentsByUser/${user.id}`
         );
 
         setRentedBoats(response.data);
@@ -54,7 +54,7 @@ export default function ProfilePage() {
     try {
       for (const boatId of boatIds) {
         await axios.put(
-          `http://muhamedsadovic-001-site1.ftempurl.com/api/Boat/updateAvailableTrue/${boatId}`,
+          `https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/updateAvailableTrue/${boatId}`,
           boatId
         );
       }
@@ -70,7 +70,7 @@ export default function ProfilePage() {
     if (isConfirmed) {
       try {
         axios.delete(
-          `http://muhamedsadovic-001-site1.ftempurl.com/api/Rent/CancelRent/${id}`
+          `https://muhamedsadovic-001-site1.ftempurl.com/api/Rent/CancelRent/${id}`
         );
         alert("You have successfully canceled your rent!");
         window.location.reload();
@@ -108,7 +108,7 @@ export default function ProfilePage() {
   function deleteUser(id) {
     try {
       axios.delete(
-        `http://muhamedsadovic-001-site1.ftempurl.com/api/User/deleteUser/${id}`
+        `https://muhamedsadovic-001-site1.ftempurl.com/api/User/deleteUser/${id}`
       );
       alert(
         "You have successfully deleted your profile. Bye, see you next time!"
@@ -125,7 +125,7 @@ export default function ProfilePage() {
       <div className="podaci">
         <h2 style={{ marginTop: 0 }}>User</h2>
         <img
-          src={`http://muhamedsadovic-001-site1.ftempurl.com/Images/${userData.imageName}`}
+          src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${userData.imageName}`}
           alt=""
         />
         <p>
@@ -150,7 +150,7 @@ export default function ProfilePage() {
             {rentedBoats.map((boat) => (
               <div>
                 <img
-                  src={`http://muhamedsadovic-001-site1.ftempurl.com/Images/${boat.imageName}`}
+                  src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${boat.imageName}`}
                   alt=""
                   width="300px"
                   height="300px"
