@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { MyContext } from "../../context/myContext";
 import axios from "axios";
 import "./ProfilePage.css";
-import { Link } from "react-router-dom";
 
 export default function ProfilePage() {
   const [userData, setUserData] = useState({
@@ -11,6 +13,8 @@ export default function ProfilePage() {
     imageName: "",
   });
   const [rentedBoats, setRentedBoats] = useState([]);
+  const navigate = useNavigate();
+  const { setUserFunction } = useContext(MyContext);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -63,6 +67,33 @@ export default function ProfilePage() {
     }
   }
 
+  const deleteUserHandler = () => {
+    setUserFunction(null);
+    localStorage.removeItem("user");
+    axios.defaults.headers.common["Authorization"] = "";
+    navigate("/login");
+  };
+
+  function handleDeleteProfile(id) {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to delete your proflie"
+    );
+    if (isConfirmed) {
+      try {
+        axios.delete(`https://localhost:7087/api/User/deleteUser/${id}`);
+        alert(
+          "You have successfully deleted your profile. Bye, see you next time!"
+        );
+        deleteUserHandler();
+        window.location.reload();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
+
+  console.log(userData.id);
+
   return (
     <div className="userContainer">
       <div className="podaci">
@@ -77,9 +108,14 @@ export default function ProfilePage() {
         <p>
           <span>Email:</span> {userData.email}
         </p>
-        <Link to={`/editUser/${userData.id}`} className="detailsButton">
-          Edit
-        </Link>
+        <div className="dugmici">
+          <Link to={`/editUser/${userData.id}`} className="detailsButton">
+            Edit
+          </Link>
+          <button onClick={() => handleDeleteProfile(userData.id)}>
+            Delete profile
+          </button>
+        </div>
       </div>
       <div className="rentedBoats">
         <h1>Your rents</h1>

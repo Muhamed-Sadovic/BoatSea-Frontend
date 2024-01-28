@@ -18,6 +18,20 @@
 .userContainer .podaci p span {
   font-weight: bold;
 }
+.userContainer .podaci .dugmici{
+  display: flex;
+}
+.userContainer .podaci .dugmici button{
+  width: 100px;
+  height: 50px;
+  background-color: red;
+  color: white;
+  border: none;
+  margin: 20px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
 .userContainer .podaci .detailsButton {
   width: 100px;
   height: 50px;
