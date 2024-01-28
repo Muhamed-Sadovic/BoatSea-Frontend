@@ -15,6 +15,7 @@ export default function ProfilePage() {
   const [rentedBoats, setRentedBoats] = useState([]);
   const navigate = useNavigate();
   const { setUserFunction } = useContext(MyContext);
+  const [boatsId, setBoatsId] = useState([]);
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -30,8 +31,6 @@ export default function ProfilePage() {
     }
   }, []);
 
-  console.log(rentedBoats);
-
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const user = storedUser.user;
@@ -42,6 +41,7 @@ export default function ProfilePage() {
         );
 
         setRentedBoats(response.data);
+        setBoatsId(response.data.map((boat) => boat.boatId));
       } catch (error) {
         console.error("Error fetching rented boats", error);
       }
@@ -50,9 +50,20 @@ export default function ProfilePage() {
     fetchRentedBoats();
   }, []);
 
-  console.log(rentedBoats);
+  const resetBoatsAvailability = async (boatIds) => {
+    try {
+      for (const boatId of boatIds) {
+        await axios.put(
+          `https://localhost:7087/api/Boat/updateAvailableTrue/${boatId}`,
+          boatId
+        );
+      }
+    } catch (error) {
+      console.error("Error resetting boats availability", error);
+    }
+  };
 
-  function handleDeleteBoat(id) {
+  function handleCancelRent(id) {
     const isConfirmed = window.confirm(
       "Are you sure you want to cancel this rental?"
     );
@@ -76,23 +87,34 @@ export default function ProfilePage() {
 
   function handleDeleteProfile(id) {
     const isConfirmed = window.confirm(
-      "Are you sure you want to delete your proflie"
+      "Are you sure you want to delete your profile?"
     );
     if (isConfirmed) {
-      try {
-        axios.delete(`https://localhost:7087/api/User/deleteUser/${id}`);
-        alert(
-          "You have successfully deleted your profile. Bye, see you next time!"
-        );
-        deleteUserHandler();
-        window.location.reload();
-      } catch (e) {
-        console.error(e);
+      if (rentedBoats.length > 0) {
+        resetBoatsAvailability(boatsId)
+          .then(() => {
+            deleteUser(id);
+          })
+          .catch((error) => {
+            console.error("Error resetting boats availability", error);
+          });
+      } else {
+        deleteUser(id);
       }
     }
   }
-
-  console.log(userData.id);
+  function deleteUser(id) {
+    try {
+      axios.delete(`https://localhost:7087/api/User/deleteUser/${id}`);
+      alert(
+        "You have successfully deleted your profile. Bye, see you next time!"
+      );
+      deleteUserHandler();
+      window.location.reload();
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <div className="userContainer">
@@ -141,7 +163,7 @@ export default function ProfilePage() {
                 <p>
                   <span>End:</span> {boat.endDate}
                 </p>
-                <button onClick={() => handleDeleteBoat(boat.id)}>
+                <button onClick={() => handleCancelRent(boat.id)}>
                   Cancel
                 </button>
               </div>

@@ -33,6 +33,7 @@
 .picker {
   display: flex;
   justify-content: space-between;
+  width: 350px;
 }
 .picker p {
   margin-bottom: 2px;
@@ -57,12 +58,12 @@
   background-color: rgb(47, 223, 246);
   transition: 1s;
 }
-.boatDetailsContainer .details .noRent{
+.boatDetailsContainer .details .noRent {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.boatDetailsContainer .details .noRent button{
+.boatDetailsContainer .details .noRent button {
   width: 100px;
   height: 50px;
   color: white;
@@ -102,6 +103,16 @@
   background-color: rgb(47, 223, 246);
   transition: 1s;
 }
+.custom-input {
+  border-radius: 15px;
+  border: 1px #0c8af8 solid;
+  padding: 4px 12px;
+  background-color: white;
+  height: 22px;
+  box-shadow: 0 0 2px #0074d9;
+  width: 130px;
+  cursor: pointer;
+}
 @media screen and (max-width: 980px) {
   .boatDetailsContainer {
     display: flex;
@@ -116,8 +127,11 @@
     width: 90%;
   }
 }
-@media screen and (max-width: 450px) {
-  .react-datepicker__input-container {
-    width: 50%;
+@media screen and (max-width: 460px) {
+  .picker{
+    width: 270px;
+  }
+  .custom-input{
+    width: 100px;
   }
 }

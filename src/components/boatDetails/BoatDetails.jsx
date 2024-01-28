@@ -1,8 +1,8 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../context/myContext";
-import DatePicker from "react-datepicker";
 import { loadStripe } from "@stripe/stripe-js";
+import DatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BoatDetails.css";
@@ -22,6 +22,10 @@ function BoatDetails() {
   const { id } = useParams();
   const { user } = useContext(MyContext);
   const navigate = useNavigate();
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
   const [boat, setBoat] = useState({
     id: "",
     name: "",
@@ -30,10 +34,6 @@ function BoatDetails() {
     imageName: "",
     description: "",
   });
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState("");
 
   const openModal = (imageName) => {
     setSelectedImage(imageName);
@@ -52,9 +52,6 @@ function BoatDetails() {
 
       const encodedStartDate = encodeURIComponent(startDateISO);
       const encodedEndDate = encodeURIComponent(endDateISO);
-
-      console.log("User id:", user.user.id);
-      console.log("Boat id: ", id);
 
       const response = await axios.post(`${url}create-checkout-session`, {
         price: totalPrice,
@@ -135,6 +132,7 @@ function BoatDetails() {
           <div>
             <p>From</p>
             <DatePicker
+              className="custom-input"
               selected={startDate}
               onChange={(date) => setStartDate(date)}
               selectsStart
@@ -146,6 +144,7 @@ function BoatDetails() {
           <div>
             <p>To</p>
             <DatePicker
+              className="custom-input"
               selected={endDate}
               onChange={(date) => setEndDate(date)}
               selectsEnd
@@ -166,7 +165,9 @@ function BoatDetails() {
           </div>
         ) : (
           <div className={boat.available ? "dugmici" : "noRent"}>
-            <button onClick={redirectToCheckout} disabled={!boat.available}>Rent</button>
+            <button onClick={redirectToCheckout} disabled={!boat.available}>
+              Rent
+            </button>
           </div>
         )}
         {isModalOpen && (

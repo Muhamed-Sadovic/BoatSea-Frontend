@@ -92,6 +92,20 @@
   background-attachment: red;
   transition: 1s;
 }
+@media screen and (max-width: 975px) {
+  .userContainer{
+    height: auto;
+  }
+  .userContainer .podaci{
+    height: 500px;
+  }
+  .userContainer .podaci .dugmici{
+    display: block;
+  }
+  .userContainer .podaci .dugmici button{
+    margin-top: 0;
+  }
+}
 
 @media screen and (max-width: 620px) {
   .userContainer {
@@ -104,7 +118,11 @@
   .userContainer .podaci {
     margin-bottom: 20px;
     width: 50%;
-    height: 300px;
+    height: 400px;
+  }
+  .userContainer .podaci img{
+    width: 120px;
+    height: 120px;
   }
 }
 @media screen and (max-width: 525px) {

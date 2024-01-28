@@ -86,7 +86,6 @@ function EditUser() {
         }
       );
 
-      console.log(response.data);
       alert("Successfully updated data");
       navigate("/profile");
     } catch (e) {

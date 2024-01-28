@@ -48,7 +48,6 @@ function Boats() {
       try {
         const response = await axios.get(`${url}GetAllBoats`);
         setAllBoats(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching boats:", error);
       }
