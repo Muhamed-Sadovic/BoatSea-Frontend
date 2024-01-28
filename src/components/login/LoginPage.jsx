@@ -11,7 +11,6 @@ function Login() {
   const [password, setPassword] = useState("");
   const [emailErrorMessage, setEmailErrorMessage] = useState(null);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false); //spiner da uradim
   const [error, setError] = useState(null);
   const { setUserFunction } = useContext(MyContext);
   const navigate = useNavigate();
@@ -42,10 +41,8 @@ function Login() {
     }
 
     try {
-      setLoading(true);
-
       const response = await axios.post(
-        "https://localhost:7087/api/User/login",
+        "http://muhamedsadovic-001-site1.ftempurl.com/api/User/login",
         {
           email: email,
           password: password,
@@ -83,8 +80,6 @@ function Login() {
       } else {
         setError("Something went wrong. Please try again later");
       }
-    } finally {
-      setLoading(false);
     }
   };
 

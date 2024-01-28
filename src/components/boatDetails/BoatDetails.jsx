@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import axios from "axios";
 import "react-datepicker/dist/react-datepicker.css";
 import "./BoatDetails.css";
-const url = "https://localhost:7087/api/Boat/";
+const url = "http://muhamedsadovic-001-site1.ftempurl.com/api/Boat/";
 
 let stripePromise;
 const getStripe = () => {
@@ -107,7 +107,7 @@ function BoatDetails() {
   return (
     <div className="boatDetailsContainer">
       <img
-        src={`https://localhost:7087/Images/${boat.imageName}`}
+        src={`http://muhamedsadovic-001-site1.ftempurl.com/Images/${boat.imageName}`}
         alt=""
         onClick={() => openModal(boat.imageName)}
       />
@@ -175,7 +175,7 @@ function BoatDetails() {
             <span className="close">&times;</span>
             <img
               className="modalContent"
-              src={`https://localhost:7087/Images/${selectedImage}`}
+              src={`http://muhamedsadovic-001-site1.ftempurl.com/Images/${selectedImage}`}
               alt="Expanded boat"
             />
             <div className="caption">{selectedImage}</div>

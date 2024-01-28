@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./AdminPanel.css";
-const url = "https://localhost:7087/api/User/";
+const url = "http://muhamedsadovic-001-site1.ftempurl.com/api/User/";
 
 function AdminPanel() {
   let token = "";
@@ -69,7 +69,7 @@ function AdminPanel() {
       <div className="podaci">
         <h2 style={{ marginTop: 0 }}>Admin</h2>
         <img
-          src={`https://localhost:7087/Images/${adminData.imageName}`}
+          src={`http://muhamedsadovic-001-site1.ftempurl.com/Images/${adminData.imageName}`}
           alt=""
         />
         <p>

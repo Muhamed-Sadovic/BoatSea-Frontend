@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import './ResetPassword.css'
+import "./ResetPassword.css";
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -45,7 +45,7 @@ function ResetPassword() {
 
     try {
       await axios.post(
-        `https://localhost:7087/api/User/resetPassword/${token}`,
+        `http://muhamedsadovic-001-site1.ftempurl.com/api/User/resetPassword/${token}`,
         {
           newPassword: password,
         }

@@ -16,12 +16,16 @@ function Register() {
   const [imageErrorMessage, setImageErrorMessage] = useState(null);
   const [file, setFile] = useState();
   const [fileName, setFileName] = useState("");
+  const [role, setRole] = useState("User");
   const navigate = useNavigate();
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
   const PromenaSlike = (e) => {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
+  };
+  const handleSelectChange = (event) => {
+    setRole(event.target.value);
   };
 
   const registerUserHandler = async (e) => {
@@ -94,10 +98,11 @@ function Register() {
     formData.append("password", password);
     formData.append("ImageName", fileName);
     formData.append("Image", file);
+    formData.append("Role", role);
 
     try {
       const response = await axios.post(
-        "https://localhost:7087/api/User/register",
+        "http://muhamedsadovic-001-site1.ftempurl.com/api/User/register",
         formData,
         {
           headers: {
@@ -107,9 +112,8 @@ function Register() {
         }
       );
 
-      console.log(response.data);
-      console.log(response.data.user.id);
       const id = response.data.user.id;
+      const role = response.data.user.role;
 
       setName("");
       setEmail("");
@@ -117,16 +121,21 @@ function Register() {
       setNameErrorMessage("");
       setEmailErrorMessage("");
       setPasswordErrorMessage("");
-
-      navigate(`/verifyAccount/${id}`);
+      if (role === "Admin") {
+        alert("You have successfully created an account as an admin!");
+        navigate("/login");
+      } else {
+        navigate(`/verifyAccount/${id}`);
+      }
     } catch (e) {
       console.log("error" + e);
       if (e.response) {
         if (e.response.status === 404) {
-          alert("This account already exists, try with another one!")
+          alert("This account already exists, try with another one!");
         } else if (e.response.status === 400) {
           alert("This account already exists, try with another one!");
-        }}
+        }
+      }
     }
   };
 
@@ -182,6 +191,13 @@ function Register() {
           </label>
           <input type="file" id="image" name="image" onChange={PromenaSlike} />
           {imageErrorMessage && <p>{imageErrorMessage}</p>}
+          <label>
+            <strong>Role</strong>
+          </label>
+          <select name="type" value={role} onChange={handleSelectChange}>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+          </select>
           <button type="submit">Register</button>
         </form>
         <p>Already Have an Account</p>

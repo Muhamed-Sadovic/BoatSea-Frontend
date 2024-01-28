@@ -14,7 +14,7 @@ function VerificationPage() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        `https://localhost:7087/api/User/verifyAccount/${id}`,
+        `http://muhamedsadovic-001-site1.ftempurl.com/api/User/verifyAccount/${id}`,
         JSON.stringify({ code: code }),
         {
           headers: {

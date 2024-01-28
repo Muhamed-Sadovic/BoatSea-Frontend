@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import "./EditUser.css";
-const url = "https://localhost:7087/api/User/";
+const url = "http://muhamedsadovic-001-site1.ftempurl.com/api/User/";
 
 function EditUser() {
   const { id } = useParams();
