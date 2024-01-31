@@ -4,7 +4,7 @@ import axios from "axios";
 import { MyContext } from "../../context/myContext";
 import { Link } from "react-router-dom";
 import "./Boats.css";
-const url = "https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/";
+const url = "https://localhost:7087/api/Boat/";
 
 function Boats() {
   const { user } = useContext(MyContext);
@@ -111,7 +111,7 @@ function Boats() {
                   <div className="rentedBanner">Rented</div>
                 )}
                 <img
-                  src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${boat.imageName}`}
+                  src={`https://localhost:7087/Images/${boat.imageName}`}
                   alt="Slika"
                   onClick={() => openModal(boat.imageName)}
                 />
@@ -151,7 +151,7 @@ function Boats() {
             <span className="close">&times;</span>
             <img
               className="modalContent"
-              src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${selectedImage}`}
+              src={`https://localhost:7087/Images/${selectedImage}`}
               alt="Expanded boat"
             />
             <div className="caption">{selectedImage}</div>

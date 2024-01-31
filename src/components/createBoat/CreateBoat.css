@@ -54,6 +54,7 @@
     background-color: rgb(26, 188, 209);
     color: white;
     cursor: pointer;
+    font-size: 16px;
 }
 .createBoatContainer form .buttonDiv p{
     color: red;

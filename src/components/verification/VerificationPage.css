@@ -42,4 +42,5 @@
 }
 .verificationContainer form button:hover {
   background-color: #4dde52;
+  transition: 1s;
 }

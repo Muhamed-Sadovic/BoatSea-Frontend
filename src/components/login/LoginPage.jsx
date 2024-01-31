@@ -41,8 +41,9 @@ function Login() {
     }
 
     try {
+
       const response = await axios.post(
-        "https://muhamedsadovic-001-site1.ftempurl.com/api/User/login",
+        "https://localhost:7087/api/User/login",
         {
           email: email,
           password: password,
@@ -93,6 +94,7 @@ function Login() {
           </label>
           <input
             type="email"
+            id="email"
             placeholder="Enter Email"
             autoComplete="off"
             name="email"

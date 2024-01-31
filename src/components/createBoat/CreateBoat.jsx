@@ -72,7 +72,7 @@ function CreateBoat() {
 
     try {
       const response = await axios.post(
-        "https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/CreateBoat",
+        "https://localhost:7087/api/Boat/CreateBoat",
         formData,
         {
           headers: {

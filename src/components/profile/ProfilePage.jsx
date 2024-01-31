@@ -37,7 +37,7 @@ export default function ProfilePage() {
     const fetchRentedBoats = async () => {
       try {
         const response = await axios.get(
-          `https://muhamedsadovic-001-site1.ftempurl.com/api/Rent/GetRentsByUser/${user.id}`
+          `https://localhost:7087/api/Rent/GetRentsByUser/${user.id}`
         );
 
         setRentedBoats(response.data);
@@ -54,7 +54,7 @@ export default function ProfilePage() {
     try {
       for (const boatId of boatIds) {
         await axios.put(
-          `https://muhamedsadovic-001-site1.ftempurl.com/api/Boat/updateAvailableTrue/${boatId}`,
+          `https://localhost:7087/api/Boat/updateAvailableTrue/${boatId}`,
           boatId
         );
       }
@@ -69,9 +69,7 @@ export default function ProfilePage() {
     );
     if (isConfirmed) {
       try {
-        axios.delete(
-          `https://muhamedsadovic-001-site1.ftempurl.com/api/Rent/CancelRent/${id}`
-        );
+        axios.delete(`https://localhost:7087/api/Rent/CancelRent/${id}`);
         alert("You have successfully canceled your rent!");
         window.location.reload();
       } catch (e) {
@@ -107,9 +105,7 @@ export default function ProfilePage() {
   }
   function deleteUser(id) {
     try {
-      axios.delete(
-        `https://muhamedsadovic-001-site1.ftempurl.com/api/User/deleteUser/${id}`
-      );
+      axios.delete(`https://localhost:7087/api/User/deleteUser/${id}`);
       alert(
         "You have successfully deleted your profile. Bye, see you next time!"
       );
@@ -125,7 +121,7 @@ export default function ProfilePage() {
       <div className="podaci">
         <h2 style={{ marginTop: 0 }}>User</h2>
         <img
-          src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${userData.imageName}`}
+          src={`https://localhost:7087/Images/${userData.imageName}`}
           alt=""
         />
         <p>
@@ -145,37 +141,39 @@ export default function ProfilePage() {
       </div>
       <div className="rentedBoats">
         <h1>Your rents</h1>
-        {rentedBoats.length > 0 ? (
-          <div className="rentedBoat">
-            {rentedBoats.map((boat) => (
-              <div>
-                <img
-                  src={`https://muhamedsadovic-001-site1.ftempurl.com/Images/${boat.imageName}`}
-                  alt=""
-                  width="300px"
-                  height="300px"
-                />
-                <p>
-                  <span>Name:</span> {boat.name}
-                </p>
-                <p>
-                  <span>Type:</span> {boat.type}
-                </p>
-                <p>
-                  <span>Start:</span> {boat.startDate}
-                </p>
-                <p>
-                  <span>End:</span> {boat.endDate}
-                </p>
-                <button onClick={() => handleCancelRent(boat.id)}>
-                  Cancel
-                </button>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <h3>You have currently no rents</h3>
-        )}
+        <div className="rentedBoatsCont">
+          {rentedBoats.length > 0 ? (
+            <div className="rentedBoat">
+              {rentedBoats.map((boat) => (
+                <div className="rentedBoatAlone">
+                  <img
+                    src={`https://localhost:7087/Images/${boat.imageName}`}
+                    alt=""
+                    width="300px"
+                    height="300px"
+                  />
+                  <p>
+                    <span>Name:</span> {boat.name}
+                  </p>
+                  <p>
+                    <span>Type:</span> {boat.type}
+                  </p>
+                  <p>
+                    <span>Start:</span> {boat.startDate}
+                  </p>
+                  <p>
+                    <span>End:</span> {boat.endDate}
+                  </p>
+                  <button onClick={() => handleCancelRent(boat.id)}>
+                    Cancel
+                  </button>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <h3>You have currently no rents</h3>
+          )}
+        </div>
       </div>
     </div>
   );

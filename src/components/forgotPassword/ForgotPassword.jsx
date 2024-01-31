@@ -9,10 +9,10 @@ function ForgotPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://muhamedsadovic-001-site1.ftempurl.com/api/User/forgotPassword", {
+      await axios.post("https://localhost:7087/api/User/forgotPassword", {
         email,
       });
-      alert("Link za resetovanje lozinke je poslat na vaš email.");
+      alert("A password reset link has been sent to your email.");
     } catch (error) {
       console.error("Greška: ", error);
     }

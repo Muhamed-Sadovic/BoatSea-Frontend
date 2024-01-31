@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import "./ResetPassword.css";
+import './ResetPassword.css'
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
@@ -17,6 +17,10 @@ function ResetPassword() {
 
     if (password.trim().length === 0) {
       setPasswordErrorMessage("Please enter password!");
+      isValid = false;
+      return;
+    } else if (password.trim().length < 6) {
+      setPasswordErrorMessage("Password needs minimum 6 characters!");
       isValid = false;
       return;
     } else {
@@ -45,7 +49,7 @@ function ResetPassword() {
 
     try {
       await axios.post(
-        `https://muhamedsadovic-001-site1.ftempurl.com/api/User/resetPassword/${token}`,
+        `https://localhost:7087/api/User/resetPassword/${token}`,
         {
           newPassword: password,
         }

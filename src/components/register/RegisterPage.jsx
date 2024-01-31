@@ -24,9 +24,9 @@ function Register() {
     setFile(e.target.files[0]);
     setFileName(e.target.files[0].name);
   };
-  const handleSelectChange = (event) => {
-    setRole(event.target.value);
-  };
+  // const handleSelectChange = (event) => {
+  //   setRole(event.target.value);
+  // };
 
   const registerUserHandler = async (e) => {
     e.preventDefault();
@@ -56,7 +56,7 @@ function Register() {
       setPasswordErrorMessage("Please enter password!");
       isValid = false;
       return;
-    } else if (password.trim().length < 4) {
+    } else if (password.trim().length < 6) {
       setPasswordErrorMessage("Password needs minimum 6 characters!");
       isValid = false;
       return;
@@ -91,6 +91,7 @@ function Register() {
     if (!isValid) {
       return;
     }
+    setRole("User");
 
     const formData = new FormData();
     formData.append("name", name);
@@ -102,7 +103,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "https://muhamedsadovic-001-site1.ftempurl.com/api/User/register",
+        "https://localhost:7087/api/User/register",
         formData,
         {
           headers: {
@@ -113,7 +114,7 @@ function Register() {
       );
 
       const id = response.data.user.id;
-      const role = response.data.user.role;
+      //const role = response.data.user.role;
 
       setName("");
       setEmail("");
@@ -121,12 +122,13 @@ function Register() {
       setNameErrorMessage("");
       setEmailErrorMessage("");
       setPasswordErrorMessage("");
-      if (role === "Admin") {
-        alert("You have successfully created an account as an admin!");
-        navigate("/login");
-      } else {
-        navigate(`/verifyAccount/${id}`);
-      }
+      // if (role === "Admin") {
+      //   alert("Uspesno ste kreirali nalog kao admin!")
+      //   navigate("/login");
+      // } else {
+      //   navigate(`/verifyAccount/${id}`);
+      // }
+      navigate(`/verifyAccount/${id}`);
     } catch (e) {
       console.log("error" + e);
       if (e.response) {
@@ -191,13 +193,13 @@ function Register() {
           </label>
           <input type="file" id="image" name="image" onChange={PromenaSlike} />
           {imageErrorMessage && <p>{imageErrorMessage}</p>}
-          <label>
+          {/* <label>
             <strong>Role</strong>
-          </label>
-          <select name="type" value={role} onChange={handleSelectChange}>
+          </label> */}
+          {/* <select name="type" value={role} onChange={handleSelectChange}>
             <option value="User">User</option>
             <option value="Admin">Admin</option>
-          </select>
+          </select> */}
           <button type="submit">Register</button>
         </form>
         <p>Already Have an Account</p>
