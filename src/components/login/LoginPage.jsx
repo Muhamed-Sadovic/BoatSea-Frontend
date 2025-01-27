@@ -51,7 +51,6 @@ function Login() {
       );
 
       const responseData = response.data;
-      console.log(responseData);
       const role = responseData.user.role;
 
       axios.defaults.headers.common[
@@ -87,7 +86,7 @@ function Login() {
   return (
     <>
       <div className="loginContainer">
-        <h1>Login</h1>
+        <h1>asotica500@gmail.com</h1>
         <form onSubmit={loginUserHandler}>
           <label htmlFor="email">
             <strong>Email</strong>

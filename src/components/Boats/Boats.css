@@ -1,26 +1,45 @@
 .searchbar {
-  margin: 2%;
-  margin-top: 80px;
-  width: 96%;
-  height: 80px;
-  border-radius: 10px;
-  background-color: white;
-  opacity: 1;
+  margin: 20px auto;
+  margin-top: 40px;
+  padding: 10px 20px;
+  width: 90%;
+  height: auto;
+  border-radius: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.searchbar form {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.searchbar form {
-  width: 50%;
-  display: flex;
-  justify-content: space-evenly;
+  gap: 15px;
+  width: 100%;
+  max-width: 800px;
 }
 .searchbar form label {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
+  color: #333;
 }
-.searchbar form input[type=text], select{
-  cursor: pointer;
+.searchbar form input[type="text"],
+.searchbar form select {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 200px;
+  transition: all 0.3s ease;
+}
+.searchbar form input[type="text"]:focus,
+.searchbar form select:focus {
+  border-color: #05445E;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
 .boatsContainer {
   margin: 2%;
@@ -75,18 +94,19 @@
 .boatContainer .desc .typePrice p span {
   font-weight: bold;
 }
-.boatContainer .dugmici {
+.boatsContainer .boatContainer .dugmici {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
 }
-.boatContainer .dugmici .detailsButton {
+.boatsContainer .boatContainer .dugmici .detailsButton {
   width: 100px;
   height: 50px;
-  background-color: rgb(26, 188, 209);
+  background-color: #189AB4;
   color: white;
   border: none;
-  margin: 20px 10px;
+  margin: 10px 10px;
   border-radius: 10px;
   cursor: pointer;
   text-decoration: none;
@@ -95,7 +115,7 @@
   align-items: center;
 }
 .boatContainer .dugmici .detailsButton:hover {
-  background-color: rgb(47, 223, 246);
+  background-color: #75E6DA;
   transition: 1s;
 }
 .modal {
@@ -130,12 +150,7 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: rgba(
-    255,
-    0,
-    0,
-    0.7
-  );
+  background-color: rgba(255, 0, 0, 0.7);
   color: white;
   padding: 5px 10px;
   z-index: 2;
@@ -177,7 +192,7 @@
   .searchbar {
     height: 200px;
   }
-  .searchbar form{
+  .searchbar form {
     height: 150px;
   }
   .searchbar form {

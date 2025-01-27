@@ -135,43 +135,41 @@ export default function ProfilePage() {
             Edit
           </Link>
           <button onClick={() => handleDeleteProfile(userData.id)}>
-            Delete profile
+            Delete
           </button>
         </div>
       </div>
       <div className="rentedBoats">
-        <h1>Your rents</h1>
+        <h1>Your Rented Boats</h1>
         <div className="rentedBoatsCont">
           {rentedBoats.length > 0 ? (
-            <div className="rentedBoat">
-              {rentedBoats.map((boat) => (
-                <div className="rentedBoatAlone">
-                  <img
-                    src={`https://localhost:7087/Images/${boat.imageName}`}
-                    alt=""
-                    width="300px"
-                    height="300px"
-                  />
-                  <p>
-                    <span>Name:</span> {boat.name}
-                  </p>
-                  <p>
-                    <span>Type:</span> {boat.type}
-                  </p>
-                  <p>
-                    <span>Start:</span> {boat.startDate}
-                  </p>
-                  <p>
-                    <span>End:</span> {boat.endDate}
-                  </p>
-                  <button onClick={() => handleCancelRent(boat.id)}>
-                    Cancel
-                  </button>
-                </div>
-              ))}
-            </div>
+            rentedBoats.map((boat) => (
+              <div className="rentedBoatAlone" key={boat.id}>
+                <img
+                  src={`https://localhost:7087/Images/${boat.imageName}`}
+                  alt={boat.name}
+                  width="300px"
+                  height="300px"
+                />
+                <p>
+                  <span>Name:</span> {boat.name}
+                </p>
+                <p>
+                  <span>Type:</span> {boat.type}
+                </p>
+                <p>
+                  <span>Start:</span> {boat.startDate}
+                </p>
+                <p>
+                  <span>End:</span> {boat.endDate}
+                </p>
+                <button onClick={() => handleCancelRent(boat.id)}>
+                  Cancel Rent
+                </button>
+              </div>
+            ))
           ) : (
-            <h3>You have currently no rents</h3>
+            <h3>You currently have no rents.</h3>
           )}
         </div>
       </div>

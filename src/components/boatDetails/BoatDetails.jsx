@@ -110,50 +110,57 @@ function BoatDetails() {
         src={`https://localhost:7087/Images/${boat.imageName}`}
         alt=""
         onClick={() => openModal(boat.imageName)}
+        height="400px"
       />
       <div className="details">
-        <h1>Details</h1>
+        <h1>Boat Details</h1>
         <p>
           <span>Name:</span> {boat.name}
         </p>
         <p>
-          <span>Boat type:</span> {boat.type}
+          <span>Boat Type:</span> {boat.type}
         </p>
         <p>
           <span>Price:</span> {boat.price}$/per day
         </p>
         <p>
-          <span>Additional Information:</span> {boat.description}
+          <span>Description:</span> {boat.description}
         </p>
-        <p className="dateForRent">
-          <span>Choose the date for rent:</span>
-        </p>
-        <div className="picker">
-          <div>
-            <p>From</p>
-            <DatePicker
-              className="custom-input"
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-              selectsStart
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-            />
-          </div>
-          <div>
-            <p>To</p>
-            <DatePicker
-              className="custom-input"
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-              selectsEnd
-              startDate={startDate}
-              endDate={endDate}
-              minDate={startDate}
-            />
-          </div>
-        </div>
+
+        {user.user.role !== "Admin" && (
+          <>
+            <p className="dateForRent">
+              <span>Choose the date for rent:</span>
+            </p>
+            <div className="picker">
+              <div>
+                <p>From</p>
+                <DatePicker
+                  className="custom-input"
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  selectsStart
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                />
+              </div>
+              <div>
+                <p>To</p>
+                <DatePicker
+                  className="custom-input"
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  selectsEnd
+                  startDate={startDate}
+                  endDate={endDate}
+                  minDate={startDate}
+                />
+              </div>
+            </div>
+          </>
+        )}
+
         {user && user.user.role === "Admin" ? (
           <div className="dugmici">
             <Link to={`/editBoat/${boat.id}`} className="detailsButton">

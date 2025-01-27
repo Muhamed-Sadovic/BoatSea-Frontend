@@ -1,101 +1,149 @@
 .adminPanelContainer {
   margin-top: 70px;
-  width: 100%;
-  height: 500px;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f7fa; /* Svetla pozadina */
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Suptilna senka */
 }
 .podaci {
   background-color: white;
-  opacity: 0.9;
-  width: 25%;
-  height: 400px;
+  opacity: 1;
+  width: 30%;
+  height: auto;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  border-radius: 10px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Suptilna senka */
 }
 .podaci img {
   border-radius: 50%;
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover; /* Održava proporcije slike */
+  margin-bottom: 20px;
 }
+
 .podaci p {
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   max-width: 100%;
   word-wrap: break-word;
+  font-size: 18px;
+  color: #333; /* Tamniji tekst */
 }
+
 .podaci p span {
   font-weight: bold;
+  color: #05445E; /* Plavi naglasak */
 }
+
 .users {
   width: 65%;
   background-color: white;
-  opacity: 0.9;
+  opacity: 1;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Suptilna senka */
 }
-.users h3 {
+
+.users h2 {
   text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
 }
+
 .users table {
   width: 100%;
   border-collapse: collapse;
 }
-.users table thead {
+
+.users table thead th {
   text-align: left;
-  background-color: rgb(26, 188, 209);
-  height: 20px;
+  background-color: #007bff; /* Plava pozadina */
+  color: white;
+  height: 40px;
   padding: 10px;
+  font-size: 16px;
 }
+
 .users table th,
-td {
-  padding: 10px;
+.users table td {
+  padding: 15px;
+  font-size: 14px;
+  color: #333; /* Tamniji tekst */
 }
+
 .users table tr:nth-child(even) {
-  background-color: #d0bebe;
+  background-color: #f1f3f5; /* Svetlo siva boja */
 }
+
+.users table tbody tr:hover {
+  background-color: #e9ecef; /* Svetlija boja na hover */
+  transition: background-color 0.2s ease;
+}
+
 .users table tbody button {
   background-color: red;
   border: none;
-  margin-left: 13px;
   color: white;
   border-radius: 50%;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
-@media screen and (max-width: 740px) {
-  .users table thead th,
-  td {
-    font-size: 12px;
-  }
-  .users table tbody button {
-    width: 20px;
-    height: 20px;
-  }
-  .podaci img {
-    width: 90px;
-    height: 90px;
-  }
-  .podaci p {
-    font-size: 12px;
-  }
+
+.users table tbody button:hover {
+  background-color: #ff4d4d; /* Svetlija crvena na hover */
 }
-@media screen and (max-width: 580px) {
+
+@media screen and (max-width: 768px) {
   .adminPanelContainer {
-    display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
   }
-  .adminPanelContainer .podaci {
-    width: 60%;
-    margin-bottom: 20px;
-    padding: 30px 0;
-    margin-top: 100px;
+
+  .podaci {
+    width: 80%;
   }
-  .adminPanelContainer .users {
+
+  .users {
     width: 100%;
-    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .podaci img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .podaci p {
+    font-size: 14px;
+  }
+
+  .users table th,
+  .users table td {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  .users table tbody button {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
   }
 }

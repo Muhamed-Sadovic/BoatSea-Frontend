@@ -96,7 +96,7 @@ function EditUser() {
 
   return (
     <div className="editUserContainer">
-      <h1>Edit</h1>
+      <h1>Edit your account</h1>
       <form onSubmit={editUserHandler}>
         <label>
           <strong>Name</strong>

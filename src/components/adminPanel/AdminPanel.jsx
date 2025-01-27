@@ -67,10 +67,10 @@ function AdminPanel() {
   return (
     <div className="adminPanelContainer">
       <div className="podaci">
-        <h2 style={{ marginTop: 0 }}>Admin</h2>
+        <h1>Admin</h1>
         <img
           src={`https://localhost:7087/Images/${adminData.imageName}`}
-          alt=""
+          alt="Admin"
         />
         <p>
           <span>Name:</span> {adminData.name}
@@ -79,8 +79,9 @@ function AdminPanel() {
           <span>Email:</span> {adminData.email}
         </p>
       </div>
+
       <div className="users">
-        <h3>Users</h3>
+        <h2>Users</h2>
         <table>
           <thead>
             <tr>

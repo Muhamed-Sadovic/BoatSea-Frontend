@@ -68,14 +68,16 @@ function Boats() {
     <>
       <div className="searchbar">
         <form>
-          <label>Search by name:</label>
+          <label htmlFor="name">Name:</label>
           <input
+            id="name"
             type="text"
-            placeholder="Search..."
+            placeholder="Search for a boat..."
             onChange={(e) => setName(e.target.value)}
           />
-          <label>Search by type:</label>
+          <label htmlFor="type">Type:</label>
           <select
+            id="type"
             name="type"
             value={type}
             onChange={(e) => setType(e.target.value)}

@@ -147,11 +147,11 @@ function Register() {
         <h1>Register</h1>
         <form onSubmit={registerUserHandler}>
           <label>
-            <strong>Name</strong>
+            <strong>Full Name</strong>
           </label>
           <input
             type="text"
-            placeholder="Enter Name"
+            placeholder="Enter Full name"
             autoComplete="off"
             name="name"
             onChange={(e) => setName(e.target.value)}
@@ -202,7 +202,7 @@ function Register() {
           </select> */}
           <button type="submit">Register</button>
         </form>
-        <p>Already Have an Account</p>
+        <p>Already Have an Account?</p>
         <Link to="/login">Sign In</Link>
       </div>
     </>

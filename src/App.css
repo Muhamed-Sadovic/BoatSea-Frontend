@@ -1,7 +1,6 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url("../public/assets/boatBackground.jpg"); /* Relativna putanja do slike */
+  /* background-image: url("../public/assets/boatBackground.jpg"); */
+  background-color: #cfeef2;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

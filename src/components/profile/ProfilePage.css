@@ -1,7 +1,6 @@
 .userContainer {
   margin-top: 70px;
   width: 100%;
-  height: 600px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -17,24 +16,22 @@
 .userContainer .podaci p span {
   font-weight: bold;
 }
-.userContainer .podaci .dugmici{
-  display: flex;
-}
-.userContainer .podaci .dugmici button{
+.userContainer .podaci .dugmici button {
   width: 100px;
   height: 50px;
   background-color: red;
   color: white;
   border: none;
   margin: 20px 10px;
+  padding: 0px;
   border-radius: 10px;
   text-decoration: none;
   cursor: pointer;
 }
-.userContainer .podaci .detailsButton {
+.userContainer .podaci .dugmici .detailsButton {
   width: 100px;
   height: 50px;
-  background-color: rgb(26, 188, 209);
+  background-color: #189ab4;
   color: white;
   border: none;
   margin: 20px 10px;
@@ -46,70 +43,75 @@
   align-items: center;
 }
 .userContainer .podaci .detailsButton:hover {
-  background-color: rgb(47, 223, 246);
+  background-color: #75e6da;
   transition: 1s;
 }
 .rentedBoats {
   width: 65%;
-  background-color: white;
-  opacity: 0.9;
-  height: 650px;
+  background-color: #f9f9f9; /* Svetla pozadina */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Suptilna senka */
 }
 .rentedBoats h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
 }
 .rentedBoats h3 {
-  text-align: center;
+  margin: auto;
   font-size: 30px;
 }
-.rentedBoatsCont{
+.rentedBoatsCont {
   display: flex;
-  margin: 0 35px;
-  flex-direction: row;
+  flex-wrap: wrap; /* Kartice će se prilagoditi prostoru */
+  justify-content: center;
+  gap: 20px;
 }
-.rentedBoatAlone{
-  margin: 0 10px;
-}
-.rentedBoats .rentedBoat {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+.rentedBoatAlone {
   background-color: white;
-  justify-content: space-around;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Kartica sa senkom */
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.rentedBoats .rentedBoat p {
-  margin-left: 10px;
+.rentedBoatAlone p {
+  font-size: 16px;
+  color: #555;
+  margin: 10px 0;
 }
-.rentedBoats .rentedBoat p span{
+.rentedBoatAlone p span {
   font-weight: bold;
+  color: #333;
 }
-.rentedBoats .rentedBoat button {
-  width: 100px;
-  height: 50px;
-  background-color: rgb(246, 44, 44);
+.rentedBoatAlone button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff4d4d; /* Svetlo crvena */
   color: white;
   border: none;
-  margin: 0px 10px;
   border-radius: 10px;
   cursor: pointer;
-  text-decoration: none;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
 }
-.rentedBoats .rentedBoat button:hover{
-  background-attachment: red;
-  transition: 1s;
+.rentedBoatAlone button:hover {
+  background-color: #e60000; /* Tamnija crvena na hover */
 }
 @media screen and (max-width: 975px) {
-  .userContainer{
+  .userContainer {
     height: auto;
   }
-  .userContainer .podaci{
+  .userContainer .podaci {
     height: 500px;
   }
-  .userContainer .podaci .dugmici{
+  .userContainer .podaci .dugmici {
     display: block;
   }
-  .userContainer .podaci .dugmici button{
+  .userContainer .podaci .dugmici button {
     margin-top: 0;
   }
 }
@@ -127,7 +129,7 @@
     width: 50%;
     height: 400px;
   }
-  .userContainer .podaci img{
+  .userContainer .podaci img {
     width: 120px;
     height: 120px;
   }

@@ -1,118 +1,196 @@
 .boatDetailsContainer {
-  margin-top: 80px;
-  background-color: white;
-  opacity: 0.9;
-  width: 80%;
+  background-color: #f9f9f9; /* Svetla pozadina */
+  width: 85%;
   margin: auto;
   margin-top: 80px;
-  height: 550px;
+  border-radius: 15px;
+  padding: 20px;
   display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Senka za moderniji izgled */
+  flex-wrap: wrap; /* Prilagodljivo za manje ekrane */
 }
+
 .boatDetailsContainer img {
-  width: 400px;
-  height: 450px;
-  margin-top: 20px;
+  width: 40%; /* Slika zauzima 40% prostora */
+  border-radius: 15px;
+  object-fit: cover;
   cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.boatDetailsContainer img:hover {
+  transform: scale(1.05); /* Blagi zoom efekat */
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
 .boatDetailsContainer .details {
+  width: 55%; /* Detalji zauzimaju ostatak prostora */
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.boatDetailsContainer .details h1 {
+  text-align: center;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+.detailsButton,
+#crvena {
+  width: 120px; /* Širina dugmeta */
+  height: 50px; /* Visina dugmeta */
+  font-size: 16px; /* Veličina teksta */
+  font-weight: bold; /* Podebljan tekst */
+  border: none; /* Bez ivice */
+  border-radius: 10px; /* Zaobljeni uglovi */
+  cursor: pointer; /* Ikonica ruke na hover */
+  display: flex; /* Flex za centriranje sadržaja */
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; /* Bez podvlačenja teksta */
+  transition: all 0.3s ease; /* Animacija za hover */
+}
+
+/* Specifično za Edit dugme */
+.detailsButton {
+  background-color: #189ab4; /* Plava boja */
+  color: white; /* Bela boja teksta */
+}
+
+.detailsButton:hover {
+  background-color: #75e6da; /* Svetlija plava na hover */
+  transform: scale(1.05); /* Blago povećanje */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Senka na hover */
 }
 .boatDetailsContainer .details p {
   font-size: 18px;
+  color: #555;
 }
+
 .boatDetailsContainer .details p span {
   font-weight: bold;
-  color: black;
+  color: #333;
 }
-.dateForRent {
-  margin-bottom: 3px;
-}
+
 .picker {
   display: flex;
-  justify-content: space-between;
-  width: 350px;
+  justify-content: space-around;
+  gap: 5px;
+  margin-top: 10px;
 }
+
 .picker p {
-  margin-bottom: 2px;
+  font-size: 26px;
+  color: #555;
+  margin-bottom: 5px;
 }
-.boatDetailsContainer .details .dugmici {
+
+.custom-input {
+  border-radius: 10px;
+  border: 1px solid #189ab4;
+  padding: 8px 12px;
+  background-color: #f9f9f9;
+  height: 40px;
+  font-size: 16px;
+  width: 250px;
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-input:focus {
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.dugmici,
+.noRent {
   display: flex;
   justify-content: center;
-  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
 }
-.boatDetailsContainer .details .dugmici button {
-  width: 100px;
-  height: 50px;
-  background-color: rgb(26, 188, 209);
-  color: white;
+
+.dugmici button,
+.noRent button {
+  padding: 20px 50px;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
-  margin: 5px 10px;
   border-radius: 10px;
   cursor: pointer;
-  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
-.boatDetailsContainer .details .dugmici button:hover {
-  background-color: rgb(47, 223, 246);
-  transition: 1s;
-}
-.boatDetailsContainer .details .noRent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.boatDetailsContainer .details .noRent button {
-  width: 100px;
-  height: 50px;
+
+.dugmici button {
+  background-color: #189ab4;
   color: white;
-  border: none;
-  margin: 5px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
 }
-.boatDetailsContainer .details .noRent button:disabled {
-  background-color: #ccc; /* Siva boja za onemogućeno dugme */
+
+.dugmici button:hover {
+  background-color: #75e6da;
+}
+
+#crvena {
+  background-color: #e60000; /* Crvena boja */
+  color: white; /* Bela boja teksta */
+}
+
+#crvena:hover {
+  background-color: #ff4d4d; /* Svetlija crvena na hover */
+  transform: scale(1.05); /* Blago povećanje */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Senka na hover */
+}
+
+.noRent button {
+  background-color: #ccc;
   color: #666;
   cursor: not-allowed;
 }
-#crvena {
-  background-color: rgb(246, 44, 44);
-}
-#crvena:hover {
-  background-color: red;
-  transition: 1s;
-}
-.boatDetailsContainer .details .dugmici .detailsButton {
-  width: 100px;
-  height: 50px;
-  background-color: rgb(26, 188, 209);
-  color: white;
-  border: none;
-  margin: 20px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  text-decoration: none;
+
+.modal {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
 }
-.boatDetailsContainer .details .dugmici .detailsButton:hover {
-  background-color: rgb(47, 223, 246);
-  transition: 1s;
+
+.modalContent {
+  width: 60%;
+  max-height: 80%;
+  object-fit: cover;
+  border-radius: 10px;
 }
-.custom-input {
-  border-radius: 15px;
-  border: 1px #0c8af8 solid;
-  padding: 4px 12px;
-  background-color: white;
-  height: 22px;
-  box-shadow: 0 0 2px #0074d9;
-  width: 130px;
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
   cursor: pointer;
 }
+
+.caption {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+}
+
 @media screen and (max-width: 980px) {
   .boatDetailsContainer {
     display: flex;
@@ -128,10 +206,10 @@
   }
 }
 @media screen and (max-width: 460px) {
-  .picker{
+  .picker {
     width: 270px;
   }
-  .custom-input{
+  .custom-input {
     width: 100px;
   }
 }
