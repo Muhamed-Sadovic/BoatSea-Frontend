@@ -1,66 +1,117 @@
+/* LOGIN CONTAINER */
 .loginContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  background-color: white;
-  width: 35%;
-  height: 500px;
-  margin: auto;
-  margin-top: 10%;
-  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 10% auto;
+  text-align: center;
 }
+
+/* Naslov */
+.loginContainer h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Forma */
 .loginContainer form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 90%;
+  gap: 15px;
 }
-.loginContainer h2 {
-  margin-top: 0;
+
+/* Input polja sa ikonama */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease-in-out;
 }
-.loginContainer form input [type="email"],
-[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  height: 50px;
+
+.input-group:focus-within {
+  border-color: #189ab4;
+  box-shadow: 0px 0px 5px rgba(24, 154, 180, 0.3);
 }
-.loginContainer form label {
+
+/* Ikonice unutar inputa */
+.icon {
   font-size: 20px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-right: 10px;
+  color: #888;
 }
-.loginContainer form button {
-  width: 90%;
-  background-color: #189AB4;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px auto;
-  margin-top: 20px;
+
+/* Input polja */
+.input-group input {
+  width: 100%;
   border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  outline: none;
+  font-size: 16px;
+  background: transparent;
 }
-.loginContainer form button:hover {
-  background-color: #75E6DA;
-  transition: 1s;
-}
-.loginContainer form p {
-  margin: 0px;
-  margin-bottom: 10px;
+
+/* Error poruke */
+.error-message {
   color: red;
+  font-size: 14px;
+  margin-top: -5px;
 }
-@media screen and (max-width: 1230px) {
-  .loginContainer{
-    width: 50%;
+
+/* Dugme za prijavu */
+.loginContainer form button {
+  width: 100%;
+  background: #189ab4;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.loginContainer form button:hover {
+  background: #75e6da;
+}
+
+/* Linkovi */
+.forgot-link,
+.register-link {
+  font-size: 14px;
+  color: #189ab4;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out;
+}
+
+.forgot-link:hover,
+.register-link:hover {
+  color: #75e6da;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 600px) {
+  .loginContainer {
+    width: 90%;
+    padding: 20px;
   }
-}
-@media screen and (max-width: 890px) {
-  .loginContainer{
-    margin-top: 20%;
-    width: 70%;
+
+  .loginContainer h1 {
+    font-size: 20px;
+  }
+
+  .loginContainer form button {
+    font-size: 14px;
   }
 }

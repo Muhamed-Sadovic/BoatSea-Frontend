@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { MyContext } from "../../context/myContext";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 import "./ProfilePage.css";
 
@@ -14,7 +14,7 @@ export default function ProfilePage() {
   });
   const [rentedBoats, setRentedBoats] = useState([]);
   const navigate = useNavigate();
-  const { setUserFunction } = useContext(MyContext);
+  const { setUserFunction } = useContext(AuthContext);
   const [boatsId, setBoatsId] = useState([]);
 
   useEffect(() => {
@@ -158,10 +158,10 @@ export default function ProfilePage() {
                   <span>Type:</span> {boat.type}
                 </p>
                 <p>
-                  <span>Start:</span> {boat.startDate}
+                  <span>Start date:</span> {boat.startDate}
                 </p>
                 <p>
-                  <span>End:</span> {boat.endDate}
+                  <span>End date:</span> {boat.endDate}
                 </p>
                 <button onClick={() => handleCancelRent(boat.id)}>
                   Cancel Rent

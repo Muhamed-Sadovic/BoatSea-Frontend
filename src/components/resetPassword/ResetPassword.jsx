@@ -1,90 +1,79 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { AiOutlineLock } from "react-icons/ai";
 import axios from "axios";
-import './ResetPassword.css'
+import "./ResetPassword.css";
 
 function ResetPassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
   const navigate = useNavigate();
   const { token } = useParams();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let isValid = true;
+    setPasswordErrorMessage("");
 
-    if (password.trim().length === 0) {
-      setPasswordErrorMessage("Please enter password!");
-      isValid = false;
+    if (password.length < 6) {
+      setPasswordErrorMessage("🔴 Password must be at least 6 characters!");
       return;
-    } else if (password.trim().length < 6) {
-      setPasswordErrorMessage("Password needs minimum 6 characters!");
-      isValid = false;
-      return;
-    } else {
-      setPasswordErrorMessage(null);
-    }
-
-    if (confirmPassword.trim().length === 0) {
-      setPasswordErrorMessage("Please confirm password!");
-      isValid = false;
-      return;
-    } else {
-      setPasswordErrorMessage(null);
     }
 
     if (password !== confirmPassword) {
-      setPasswordErrorMessage("Passwords didn't match, try again!");
-      isValid = false;
-      return;
-    } else {
-      setPasswordErrorMessage(null);
-    }
-
-    if (!isValid) {
+      setPasswordErrorMessage("🔴 Passwords do not match!");
       return;
     }
 
     try {
       await axios.post(
-        `https://localhost:7087/api/User/resetPassword/${token}`,
+        `https://localhost:7087/api/User/resetPassword/`,
         {
+          token: token,
           newPassword: password,
         }
       );
-      alert("Your password has been successfully changed.");
+      alert("✅ Your password has been successfully changed.");
       navigate("/login");
     } catch (error) {
-      console.error("Greška: ", error);
+      console.error("Error: ", error);
+      setPasswordErrorMessage("❌ Something went wrong. Try again!");
     }
   };
 
   return (
-    <>
-      <div className="resetPassContainer">
-        <h1>Please provide your new password</h1>
-        <form onSubmit={handleSubmit}>
+    <div className="resetPassContainer">
+      <h1>Reset Your Password</h1>
+      <form onSubmit={handleSubmit}>
+        <div className="input-group">
+          <AiOutlineLock className="icon" />
           <input
             type="password"
-            placeholder="Enter new password"
+            placeholder="New password"
             autoComplete="off"
-            name="email"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </div>
+
+        <div className="input-group">
+          <AiOutlineLock className="icon" />
           <input
             type="password"
-            placeholder="Confirm new passwoed"
+            placeholder="Confirm new password"
             autoComplete="off"
-            name="email"
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
-          <button type="submit">Change</button>
-          {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
-        </form>
-      </div>
-    </>
+        </div>
+
+        {passwordErrorMessage && (
+          <p className="error-message">{passwordErrorMessage}</p>
+        )}
+
+        <button type="submit">Change Password</button>
+      </form>
+    </div>
   );
 }
 

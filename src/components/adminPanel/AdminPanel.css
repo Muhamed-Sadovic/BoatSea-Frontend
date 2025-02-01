@@ -1,5 +1,5 @@
 .adminPanelContainer {
-  margin-top: 70px;
+  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -66,18 +66,19 @@
 
 .users table thead th {
   text-align: left;
-  background-color: #007bff; /* Plava pozadina */
+  background-color: #05445E; /* Plava pozadina */
   color: white;
   height: 40px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .users table th,
 .users table td {
   padding: 15px;
-  font-size: 14px;
+  font-size: 15px;
   color: #333; /* Tamniji tekst */
+  font-weight: 500;
 }
 
 .users table tr:nth-child(even) {

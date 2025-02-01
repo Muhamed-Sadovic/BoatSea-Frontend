@@ -1,22 +1,44 @@
-.logo{
-    display: flex;
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none; /* Uklanja underline */
+  gap: 10px; /* Razmak između slike i teksta */
 }
-h3{
-    font-family: Georgia, 'Times New Roman', serif;
-    text-transform: none;
-    margin-top: 30px;
-    font-size: 35px;
+.logo-img {
+  width: 150px;
+  height: auto;
+  transition: transform 0.3s ease;
 }
-.logo span{
-    color: pink;
+.logo-text {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+  transition: color 0.3s ease;
 }
+
+/* Roze slova */
+.logo-text span {
+  color: #189ab4;
+}
+
+/* Hover efekti */
+.logo:hover .logo-img {
+  transform: scale(1.1);
+}
+
+.logo:hover .logo-text {
+  color: #75e6da;
+}
+
+/* Responsive dizajn */
 @media screen and (max-width: 845px) {
-    .logo img{
-        width: 100px;
-        height: 50px;
-        margin-top: 15px;
-    }
-    .logo h3{
-        font-size: 18px;
-    }
+  .logo-img {
+    width: 100px;
+    height: auto;
   }
+
+  .logo-text {
+    font-size: 20px;
+  }
+}

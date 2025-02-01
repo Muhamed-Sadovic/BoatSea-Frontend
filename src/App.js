@@ -13,17 +13,19 @@ import CreateBoat from "./components/createBoat/CreateBoat";
 import Boats from "./components/Boats/Boats";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
-import { MyContext } from "./context/myContext";
+import { AuthContext } from "./context/AuthContext";
 import BoatDetails from "./components/boatDetails/BoatDetails";
 import EditBoat from "./components/editBoat/EditBoat";
 import Payment from "./components/payment/Payment";
 import EditUser from "./components/editUser/EditUser";
+import Unauthorized from "./components/Unauthorized/Unauthorized";
+import ProtectedRoute from "./context/ProtectedRoute";
 import axios from "axios";
 import "@stripe/stripe-js";
 import "./App.css";
 
 function App() {
-  const { setUserFunction } = useContext(MyContext);
+  const { setUserFunction } = useContext(AuthContext);
 
   useEffect(() => {
     const data = localStorage.getItem("user");
@@ -44,17 +46,60 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/login" Component={Login} />
         <Route path="/register" Component={Register} />
-        <Route path="/profile" Component={ProfilePage} />
-        <Route path="/boatDetails/:id" Component={BoatDetails} />
-        <Route path="/editBoat/:id" Component={EditBoat} />
+        <Route path="/unauthorized" Component={Unauthorized} />
         <Route path="/verifyAccount/:id" Component={VerificationPage} />
         <Route path="/forgot-password" Component={ForgotPassword} />
         <Route path="/reset-password/:token" Component={ResetPassword} />
-        <Route path="/adminpanel" Component={AdminPanel} />
-        <Route path="/createboat" Component={CreateBoat} />
         <Route path="/boats" Component={Boats} />
         <Route path="/payment" Component={Payment} />
-        <Route path="/editUser/:id" Component={EditUser} />
+        <Route
+          path="/boatDetails/:id"
+          element={
+            <ProtectedRoute>
+              <BoatDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/editBoat/:id"
+          element={
+            <ProtectedRoute roles={["Admin"]}>
+              <EditBoat />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute roles={["User"]}>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/adminpanel"
+          element={
+            <ProtectedRoute roles={["Admin"]}>
+              <AdminPanel />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/createboat"
+          element={
+            <ProtectedRoute roles={["Admin"]}>
+              <CreateBoat />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/editUser/:id"
+          element={
+            <ProtectedRoute roles={["User"]}>
+              <EditUser />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </>

@@ -1,9 +1,8 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { MyContext } from "../../context/myContext";
+import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Dodate ikonice
 import "./LoginPage.css";
 
 function Login() {
@@ -12,36 +11,28 @@ function Login() {
   const [emailErrorMessage, setEmailErrorMessage] = useState(null);
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(null);
   const [error, setError] = useState(null);
-  const { setUserFunction } = useContext(MyContext);
+  const { setUserFunction } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const loginUserHandler = async (e) => {
     e.preventDefault();
-    let isValid = true;
     setError(null);
 
     if (email.length === 0) {
-      setEmailErrorMessage("Please enter email!");
-      isValid = false;
+      setEmailErrorMessage("⚠ Please enter your email!");
       return;
     } else {
       setEmailErrorMessage(null);
     }
 
     if (password.trim().length === 0) {
-      setPasswordErrorMessage("Please enter password!");
-      isValid = false;
+      setPasswordErrorMessage("⚠ Please enter your password!");
       return;
     } else {
       setPasswordErrorMessage(null);
     }
 
-    if (!isValid) {
-      return;
-    }
-
     try {
-
       const response = await axios.post(
         "https://localhost:7087/api/User/login",
         {
@@ -56,68 +47,64 @@ function Login() {
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${responseData.token}`;
-
       setUserFunction(responseData);
-
       localStorage.setItem("user", JSON.stringify(responseData));
+
       setEmail("");
       setPassword("");
-      if (role === "Admin") {
-        navigate("/adminpanel");
-      } else {
-        navigate("/profile");
-      }
+
+      role === "Admin" ? navigate("/adminpanel") : navigate("/profile");
     } catch (error) {
-      console.log("Error", error);
-      if (error.response) {
-        if (error.response.status === 404) {
-          setError("Invalid request. Check the entered data.");
-        } else if (error.response.status === 400) {
-          setError("Invalid request. Check the entered data.");
-        } else {
-          setError("A server error has occurred.");
-        }
-      } else {
-        setError("Something went wrong. Please try again later");
-      }
+      setError("❌ Invalid email or password. Try again.");
     }
   };
 
   return (
-    <>
-      <div className="loginContainer">
-        <h1>asotica500@gmail.com</h1>
-        <form onSubmit={loginUserHandler}>
-          <label htmlFor="email">
-            <strong>Email</strong>
-          </label>
+    <div className="loginContainer">
+      <h1>Login</h1>
+      <form onSubmit={loginUserHandler}>
+        <div className="input-group">
+          <AiOutlineMail className="icon" />
           <input
             type="email"
-            id="email"
             placeholder="Enter Email"
             autoComplete="off"
-            name="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
-          {emailErrorMessage && <p>{emailErrorMessage}</p>}
-          <label htmlFor="password">
-            <strong>Password</strong>
-          </label>
+        </div>
+        {emailErrorMessage && (
+          <p className="error-message">{emailErrorMessage}</p>
+        )}
+
+        <div className="input-group">
+          <AiOutlineLock className="icon" />
           <input
             type="password"
             placeholder="Enter Password"
-            name="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-          {passwordErrorMessage && <p>{passwordErrorMessage}</p>}
-          <button type="submit">Login</button>
-        </form>
-        <Link to="/forgot-password">Forgot password?</Link>
-        <p style={{ marginBottom: "0" }}>Don't have an account?</p>
-        <Link to="/register">Sign Up</Link>
-        {error && <p style={{ color: "red", marginBottom: "1rem" }}>{error}</p>}
-      </div>
-    </>
+        </div>
+        {passwordErrorMessage && (
+          <p className="error-message">{passwordErrorMessage}</p>
+        )}
+
+        {error && <p className="error-message">{error}</p>}
+
+        <button type="submit">Login</button>
+      </form>
+
+      <Link to="/forgot-password" className="forgot-link">
+        Forgot password?
+      </Link>
+      <p>Don't have an account?</p>
+      <Link to="/register" className="register-link">
+        Sign Up
+      </Link>
+    </div>
   );
 }
 

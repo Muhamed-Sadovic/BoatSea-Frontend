@@ -1,35 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
+import { AuthContext } from "../../context/AuthContext";
 
 function HomePage() {
+  const { user } = useContext(AuthContext);
   return (
-    <div>
-      <div className="pageContainer">
-        <div className="container">
-          <h1>Welcome on BoatSea</h1>
-          <h2>The best solution for your yacht charter</h2>
-          <p>
-            More than 10+ private yacht rentals and bareboat charters near me
-            and worldwide for your next boating trip
-          </p>
-          <p>BoatSea is the leader in peer-to-peer yacht charters.Find a yacht to charter at a very low price, or offer your yacht for charter and earn extra income. 
-            BoatSea offers you the chance to charter yachts</p>
-          <p>Go to register page to rent a boat/yacht</p>
-        </div>
-        <div className="image-container">
-          <h1>Our Boat Models</h1>
-          <p>
-            Explore our diverse range of luxury boat models available for
-            charter:
-          </p>
-          <div>
-            <img src="assets/yacht1.webp" alt="Boat Model 1" />
-            <img src="assets/yacht2.jpg" alt="Boat Mwodel 2" />
-          </div>
-          <div>
-            <img src="assets/yacht3.jpg" alt="Boat Model 3" />
-            <img src="assets/yacht4.webp" alt="Boat Model 3" />
-          </div>
+    <div className="pageContainer">
+      <div className="container">
+        <h1>Welcome to BoatSea</h1>
+        <h2>Your Best Yacht Charter Solution</h2>
+        <p>
+          Discover over <strong>10+ private yacht rentals</strong> and bareboat
+          charters worldwide for your next boating adventure.
+        </p>
+        <p>
+          BoatSea is the leader in peer-to-peer yacht charters. Find a yacht to
+          charter at an unbeatable price, or offer your yacht and earn extra
+          income.
+        </p>
+        {!user && (
+          <>
+            <p>Sign up now to start renting your dream yacht!</p>
+
+            <div className="cta-buttons">
+              <Link to="/register" className="btn register-btn">
+                Register
+              </Link>
+              <Link to="/boats" className="btn explore-btn">
+                Explore Boats
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
+
+      <div className="image-container">
+        <h1>Our Luxury Boats</h1>
+        <p>Explore our exclusive range of yachts available for charter:</p>
+        <div className="image-grid">
+          <img src="assets/yacht1.webp" alt="Luxury Yacht 1" />
+          <img src="assets/yacht2.jpg" alt="Luxury Yacht 2" />
+          <img src="assets/yacht3.jpg" alt="Luxury Yacht 3" />
+          <img src="assets/yacht4.webp" alt="Luxury Yacht 4" />
         </div>
       </div>
     </div>

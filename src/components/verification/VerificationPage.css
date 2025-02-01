@@ -5,9 +5,9 @@
   flex-direction: column;
   background-color: white;
   width: 30%;
-  height: 410px;
+  height: 350px;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 5%;
   border-radius: 20px;
 }
 .verificationContainer form {
@@ -16,10 +16,9 @@
   width: 90%;
 }
 .verificationContainer h2 {
-  margin-top: 0;
+  margin: 0;
 }
 .verificationContainer form input[type="text"] {
-  width: 100%;
   padding: 12px 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -29,10 +28,11 @@
 }
 .verificationContainer form label {
   font-size: 20px;
+  margin-bottom: 10px;
 }
 .verificationContainer form button {
   width: 90%;
-  background-color: #4caf50;
+  background-color: #189ab4;
   color: white;
   padding: 14px 20px;
   margin: 15px auto;
@@ -41,6 +41,6 @@
   cursor: pointer;
 }
 .verificationContainer form button:hover {
-  background-color: #4dde52;
+  background-color: #75e6da;
   transition: 1s;
 }

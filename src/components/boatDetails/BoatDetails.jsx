@@ -1,6 +1,6 @@
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
-import { MyContext } from "../../context/myContext";
+import { AuthContext } from "../../context/AuthContext";
 import { loadStripe } from "@stripe/stripe-js";
 import DatePicker from "react-datepicker";
 import axios from "axios";
@@ -20,7 +20,7 @@ const getStripe = () => {
 
 function BoatDetails() {
   const { id } = useParams();
-  const { user } = useContext(MyContext);
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -34,6 +34,8 @@ function BoatDetails() {
     imageName: "",
     description: "",
   });
+
+  console.log(user.user.role);
 
   const openModal = (imageName) => {
     setSelectedImage(imageName);

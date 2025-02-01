@@ -1,0 +1,38 @@
+.unauthorized-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Zauzima celu visinu ekrana */
+  background-color: #f8f9fa; /* Svetla pozadina */
+  color: #333; /* Tamni tekst */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.unauthorized-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #dc3545; /* Crvena za naglašavanje */
+}
+
+.unauthorized-container p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.unauthorized-container button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #189ab4; /* Plava boja */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.unauthorized-container button:hover {
+  background-color: #75e6da; /* Tamnija plava na hover */
+}

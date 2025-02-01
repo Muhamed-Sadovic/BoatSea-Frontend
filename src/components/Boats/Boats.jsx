@@ -1,13 +1,13 @@
 import React from "react";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { MyContext } from "../../context/myContext";
+import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import "./Boats.css";
 const url = "https://localhost:7087/api/Boat/";
 
 function Boats() {
-  const { user } = useContext(MyContext);
+  const { user } = useContext(AuthContext);
   const [allBoats, setAllBoats] = useState([]);
   const [type, setType] = useState("");
   const [name, setName] = useState("");
