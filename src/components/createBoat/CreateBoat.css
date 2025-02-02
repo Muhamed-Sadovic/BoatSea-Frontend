@@ -1,68 +1,180 @@
-.createBoatContainer{
-    width: 80%;
-    height: 640px;
-    background-color: white;
-    opacity: 0.8;
-    margin-top: 100px;
-    margin-left: 10%;
-    border: 2px solid white;
-    border-radius: 10px;
-}
-.createBoatContainer h3, h4{
-    text-align: center;
-    margin-bottom: 0px;
-    margin-top: 20px;
-}
-.createBoatContainer form{
-    padding: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 30px;
-    justify-content: space-between;
-}
-.createBoatContainer form .crBoatData{
-    width: 45%;
-    display: flex;
-    flex-direction: column;    
-}
-.createBoatContainer form label{
-    font-size: 25px;
-    margin-bottom: 10px;
-}
-.createBoatContainer input[type=text], select{
-    height: 40px;
-    border: 2px solid gray;
-    border-radius: 15px;
-    padding: 5px 10px;
-}
-.desc{
-    width: 100%;
-    display: flex;
-    flex-direction: column;  
-}
-.createBoatContainer form .buttonDiv{
-    width: 100%;
-    border-radius: 5px;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.createBoatContainer form .buttonDiv button{
-    width: 150px;
-    border-radius: 15px;
-    padding: 20px;
-    border: none;
-    background-color: #189AB4;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-}
-.createBoatContainer form .buttonDiv p{
-    color: red;
-}
-.createBoatContainer form .buttonDiv button:hover{
-    background-color: #75E6DA;
-    transition: 1s;
+.createBoatContainer {
+  width: 80%;
+  max-width: 900px;
+  height: auto;
+  background-color: white;
+  opacity: 0.9;
+  margin: 100px auto;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.createBoatContainer h3,
+.createBoatContainer h4 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.createBoatContainer form {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  justify-content: space-between;
+}
+
+.createBoatContainer form .crBoatData {
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+}
+
+.createBoatContainer form label {
+  font-size: 20px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.createBoatContainer input[type="text"],
+.createBoatContainer select,
+.createBoatContainer input[type="file"] {
+  height: 40px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  transition: 0.3s ease-in-out;
+}
+
+.createBoatContainer input:focus,
+.createBoatContainer select:focus {
+  border-color: #189ab4;
+  outline: none;
+}
+
+/* Stilizacija description inputa */
+.desc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc input {
+  height: 80px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  resize: none;
+}
+
+/* Dugme */
+.createBoatContainer form .buttonDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.createBoatContainer form .buttonDiv button {
+  width: 160px;
+  border-radius: 15px;
+  padding: 12px;
+  border: none;
+  background-color: #189ab4;
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.3s ease-in-out;
+}
+
+.createBoatContainer form .buttonDiv button:hover {
+  background-color: #75e6da;
+}
+
+.createBoatContainer form .buttonDiv p {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
+  .createBoatContainer {
+    width: 90%;
+  }
+
+  .createBoatContainer form .crBoatData {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .createBoatContainer {
+    width: 95%;
+    margin-top: 50px;
+  }
+
+  .createBoatContainer h3,
+  .createBoatContainer h4 {
+    font-size: 20px;
+  }
+
+  .createBoatContainer form {
+    flex-direction: column;
+    row-gap: 15px;
+  }
+
+  .createBoatContainer form .crBoatData {
+    width: 100%;
+  }
+
+  .createBoatContainer input,
+  .createBoatContainer select,
+  .desc input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .createBoatContainer form .buttonDiv button {
+    width: 140px;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .createBoatContainer {
+    padding: 15px;
+    width: 95%;
+  }
+
+  .createBoatContainer h3,
+  .createBoatContainer h4 {
+    font-size: 18px;
+  }
+
+  .createBoatContainer form label {
+    font-size: 16px;
+  }
+
+  .createBoatContainer input,
+  .createBoatContainer select,
+  .desc input {
+    font-size: 14px;
+    height: 35px;
+  }
+
+  .desc input {
+    height: 70px;
+  }
+
+  .createBoatContainer form .buttonDiv button {
+    width: 120px;
+    font-size: 14px;
+    padding: 8px;
+  }
+}

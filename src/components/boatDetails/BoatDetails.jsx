@@ -35,8 +35,6 @@ function BoatDetails() {
     description: "",
   });
 
-  console.log(user.user.role);
-
   const openModal = (imageName) => {
     setSelectedImage(imageName);
     setIsModalOpen(true);
@@ -48,16 +46,18 @@ function BoatDetails() {
   const redirectToCheckout = async () => {
     try {
       const daysRented = (endDate - startDate) / (1000 * 3600 * 24);
-      const totalPrice = daysRented * boat.price;
-      const startDateISO = new Date(startDate).toISOString();
-      const endDateISO = new Date(endDate).toISOString();
-
-      const encodedStartDate = encodeURIComponent(startDateISO);
-      const encodedEndDate = encodeURIComponent(endDateISO);
-
+      const totalPrice = Math.round(daysRented * boat.price);
+      if (daysRented < 1) {
+        alert(
+          "Start and end dates cannot be the same. Please select a valid period."
+        );
+        return;
+      }
       const response = await axios.post(`${url}create-checkout-session`, {
         price: totalPrice,
-        successUrl: `${window.location.origin}/payment?userId=${user.user.id}&boatId=${id}&startDate=${encodedStartDate}&endDate=${encodedEndDate}`,
+        successUrl: `${window.location.origin}/payment?userId=${
+          user.user.id
+        }&boatId=${id}&startDate=${startDate.toISOString()}&endDate=${endDate.toISOString()}`,
         cancelUrl: `${window.location.origin}/boatDetails/${boat.id}`,
       });
 
@@ -144,7 +144,7 @@ function BoatDetails() {
                   selectsStart
                   startDate={startDate}
                   endDate={endDate}
-                  minDate={startDate}
+                  minDate={new Date()}
                 />
               </div>
               <div>
@@ -156,7 +156,7 @@ function BoatDetails() {
                   selectsEnd
                   startDate={startDate}
                   endDate={endDate}
-                  minDate={startDate}
+                  minDate={new Date(startDate.getTime() + 24 * 60 * 60 * 1000)}
                 />
               </div>
             </div>

@@ -156,7 +156,6 @@ function Boats() {
               src={`https://localhost:7087/Images/${selectedImage}`}
               alt="Expanded boat"
             />
-            <div className="caption">{selectedImage}</div>
           </div>
         )}
       </div>

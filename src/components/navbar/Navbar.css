@@ -37,7 +37,7 @@
 }
 
 .nav-link:hover {
-  color: red;
+  color: #189ab4;
 }
 
 .logoutButton {
@@ -54,16 +54,12 @@
 .logoutButton:hover {
   background-color: darkred;
 }
-
-/* HAMBURGER MENU */
 .menu-icon {
   display: none;
   font-size: 24px;
   cursor: pointer;
   color: black;
 }
-
-/* RESPONSIVE DESIGN */
 @media screen and (max-width: 768px) {
   .menu-icon {
     display: block;
@@ -80,7 +76,6 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
     opacity: 0;
     visibility: hidden;
   }

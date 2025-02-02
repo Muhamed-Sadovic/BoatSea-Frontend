@@ -31,14 +31,12 @@ function Payment() {
         }
       );
       if (response.status === 200 || response.status === 201) {
-        const updateBoatResponse = await axios.put(
+        await axios.put(
           `https://localhost:7087/api/Boat/updateAvailable/${boatId}`,
           {
             available: false,
           }
         );
-
-        console.log(updateBoatResponse);
       }
       alert("Rent successfully initiated!");
       navigate("/boats");
